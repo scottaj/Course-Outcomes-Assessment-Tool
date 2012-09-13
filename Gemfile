@@ -18,16 +18,16 @@ group :development do
   gem 'pry'
 end
 
-group :nowin do
+group :nowin do # Any gem that don't work on windows.
 
 end
 
 # Test requirements
 group :test do
-  gem 'rspec', :group => "test"
-  gem 'capybara', :group => "test"
-  gem 'cucumber', :group => "test"
-  gem 'rack-test', :require => "rack/test", :group => "test"
+  gem 'rspec'
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'rack-test'
   gem "cucumber-sinatra"
   gem "database_cleaner"
   gem "prickle"
