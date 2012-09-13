@@ -18,7 +18,7 @@ group :development do
   gem 'pry'
 end
 
-group :nowin do # Any gem that don't work on windows.
+group :nowin do # Any gems that don't work on windows.
 
 end
 
@@ -26,6 +26,7 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem "capybara-webkit", :git => "git://github.com/thoughtbot/capybara-webkit.git", :branch => "master"
   gem 'cucumber'
   gem 'rack-test'
   gem "cucumber-sinatra"
