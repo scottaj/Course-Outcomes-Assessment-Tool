@@ -3,6 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 
 require 'capybara/cucumber'
 require 'rspec/expectations'
+require 'prickle/capybara'
+
+World do
+  include Capybara::DSL
+  include Prickle::Capybara
+end
 
 ##
 # You can handle all padrino applications using instead:
