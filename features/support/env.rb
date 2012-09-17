@@ -4,11 +4,9 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 require 'capybara/cucumber'
 require 'rspec/expectations'
 require 'prickle/capybara'
-require 'capybara-webkit'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 
-Capybara.javascript_driver = :webkit
 DatabaseCleaner.strategy = :transaction
 
 World do

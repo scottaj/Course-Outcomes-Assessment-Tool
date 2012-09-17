@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/thoughtbot/capybara-webkit.git
-  revision: cceb5e61922e31bdedd089aa4328551786f1c3ce
-  branch: master
-  specs:
-    capybara-webkit (0.12.0)
-      capybara (>= 1.0.0, < 1.2)
-      json
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -159,7 +150,6 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   capybara
-  capybara-webkit!
   cucumber
   cucumber-sinatra
   database_cleaner
