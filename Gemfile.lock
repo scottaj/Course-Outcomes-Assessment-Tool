@@ -36,9 +36,13 @@ GEM
     database_cleaner (0.8.0)
     diff-lcs (1.1.3)
     eventmachine (1.0.0)
+    eventmachine (1.0.0-x86-mingw32)
     extlib (0.9.15)
     ffi (1.1.5)
+    ffi (1.1.5-x86-mingw32)
     gherkin (2.11.2)
+      json (>= 1.4.6)
+    gherkin (2.11.2-x86-mingw32)
       json (>= 1.4.6)
     highline (1.6.15)
     http_router (0.10.2)
@@ -56,7 +60,9 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     mysql (2.8.1)
+    mysql (2.8.1-x86-mingw32)
     nokogiri (1.5.5)
+    nokogiri (1.5.5-x86-mingw32)
     padrino (0.10.7)
       padrino-admin (= 0.10.7)
       padrino-cache (= 0.10.7)
@@ -91,6 +97,11 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
+    pry (0.9.10-x86-mingw32)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+      win32console (~> 1.3)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -141,11 +152,13 @@ GEM
     tzinfo (0.3.33)
     url_mount (0.2.1)
       rack
+    win32console (1.3.2-x86-mingw32)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activerecord
