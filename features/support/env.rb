@@ -4,6 +4,8 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 require 'capybara/cucumber'
 require 'rspec/expectations'
 require 'prickle/capybara'
+require 'capybara-webkit'
+Capybara.javascript_driver = :webkit
 
 World do
   include Capybara::DSL
