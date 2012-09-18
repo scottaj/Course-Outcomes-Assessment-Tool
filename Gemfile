@@ -28,7 +28,6 @@ group :test do
   gem 'capybara'
   gem 'cucumber'
   gem 'rack-test'
-  gem "cucumber-sinatra"
   gem "database_cleaner"
   gem "prickle"
 end
