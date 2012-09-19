@@ -1,0 +1,12 @@
+body
+{
+    padding: 40px;
+}
+
+.center {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    width: 400px /* auto margin can only apply with exceed width, if not it will ignore it */
+}
+​
