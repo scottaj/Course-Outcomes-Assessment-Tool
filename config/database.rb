@@ -22,7 +22,7 @@ ActiveRecord::Base.configurations[:development] = {
   :username  => 'root',
   :password  => '',
   :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
+  :socket    => '/var/lib/mysql/mysql.sock'
 
 }
 
@@ -48,7 +48,7 @@ ActiveRecord::Base.configurations[:test] = {
   :username  => 'root',
   :password  => '',
   :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
+  :socket    => '/var/lib/mysql/mysql.sock'
 
 }
 

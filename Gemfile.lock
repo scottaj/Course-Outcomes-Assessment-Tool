@@ -39,6 +39,8 @@ GEM
     ffi (1.1.5-x86-mingw32)
     gherkin (2.11.2)
       json (>= 1.4.6)
+    gherkin (2.11.2-x86-mingw32)
+      json (>= 1.4.6)
     http_router (0.10.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
