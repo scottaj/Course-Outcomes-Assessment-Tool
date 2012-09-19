@@ -1,0 +1,17 @@
+html
+  head
+    == stylesheet_link_tag "bootstrap.min.css", "custom.css", "bootstrap-responsive.min.css"
+    == javascript_include_tag "application.js",  "bootstrap.min.js",  "jquery.js",  "jquery-ujs.js"
+  body
+    div class="navbar navbar-fixed-top navbar-inverse"
+      div class="navbar-inner"
+        div class="container" id="navbar"
+          a class="brand" href="/" Course Outcomes Assesment Tool
+          ul class="nav"
+            li class="divider-vertical"
+            li
+              a href="/" Home
+            li
+              a href="/login" Login
+    div class="container-fluid"
+    == yield

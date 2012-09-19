@@ -1,0 +1,12 @@
+div class="well"
+  div class="row-fluid"
+    - form_tag "/login", method: "post", class: "center form-horizontal" do
+      div class="control-group"
+        == label_tag :username, class: "control-label"
+        div class="controls"
+          == text_field_tag :username, required: true
+      div class="control-group"
+        == label_tag :password, class: "control-label"
+        div class="controls"
+          == password_field_tag :password, required: true
+      == submit_tag "Log In", class: "btn-primary"
