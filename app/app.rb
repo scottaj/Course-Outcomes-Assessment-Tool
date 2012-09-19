@@ -4,7 +4,12 @@ class CourseOutcomes < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
 
+  Slim::Engine.set_default_options :pretty => true
+  
   enable :sessions
-
- 
+  layout :layout
+  
+  get :index do
+    render "index"
+  end
 end
