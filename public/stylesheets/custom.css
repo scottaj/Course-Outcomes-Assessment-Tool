@@ -1,5 +1,4 @@
-body
-{
+body {
     padding: 40px;
 }
 
@@ -7,6 +6,5 @@ body
     float: none;
     margin: 0 auto;
     text-align: center;
-    width: 400px /* auto margin can only apply with exceed width, if not it will ignore it */
+    width: 400px;
 }
-​
