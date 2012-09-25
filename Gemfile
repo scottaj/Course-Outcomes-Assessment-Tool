@@ -12,6 +12,7 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'slim'
 gem 'activerecord', :require => "active_record"
 gem 'mysql'
+gem 'bcrypt-ruby'
 
 group :development do
   gem "ruby_parser"

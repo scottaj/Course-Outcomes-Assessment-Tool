@@ -5,6 +5,10 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 require 'prickle/capybara'
+require 'database_cleaner'
+require 'database_cleaner/cucumber'
+
+DatabaseCleaner.strategy = :truncation
 
 class CourseOutcomesWorld
   include Capybara::DSL
@@ -21,3 +25,12 @@ end
 # You can handle all padrino applications using instead:
 #   Padrino.application
 Capybara.app = CourseOutcomes
+
+
+Before do
+  DatabaseCleaner.start
+end
+
+After do
+  DatabaseCleaner.clean
+end

@@ -8,3 +8,14 @@ body {
     text-align: center;
     width: 400px;
 }
+
+.login-error {
+    color: black;
+    background-color: pink;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.pushdown {
+    padding: 40px;
+}
