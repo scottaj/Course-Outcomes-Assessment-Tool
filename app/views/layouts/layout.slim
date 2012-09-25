@@ -2,6 +2,9 @@ html
   head
     == stylesheet_link_tag "bootstrap.min.css", "custom.css", "bootstrap-responsive.min.css"
     == javascript_include_tag "application.js",  "bootstrap.min.js",  "jquery.js",  "jquery-ujs.js"
+
+    meta charset="utf-8"
+    title = page_title ||= "UDM COAT"
   body
     div class="navbar navbar-fixed-top navbar-inverse"
       div class="navbar-inner"
