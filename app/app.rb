@@ -10,6 +10,6 @@ class CourseOutcomes < Padrino::Application
   layout :layout
   
   get :index do
-    render "index"
+    render "index", locals: {page_title: "UDM COAT"}
   end
 end
