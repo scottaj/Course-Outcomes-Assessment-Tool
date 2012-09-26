@@ -3,6 +3,7 @@ class CourseOutcomes < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+	
 
   Slim::Engine.set_default_options :pretty => true
   
@@ -10,6 +11,7 @@ class CourseOutcomes < Padrino::Application
   layout :layout
   
   get :index do
-    render "index", locals: {page_title: "UDM COAT"}
+   render "index", locals: {page_title: "UDM COAT"}
   end
 end
+

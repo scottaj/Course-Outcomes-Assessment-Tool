@@ -8,14 +8,36 @@ html
   body
     div class="navbar navbar-fixed-top navbar-inverse"
       div class="navbar-inner"
-        div class="container" id="navbar"
+        div class="container-fluid" id="navbar"
           a class="brand" href="/" Course Outcomes Assessment Tool
           ul class="nav"
             li class="divider-vertical"
             li
               a href="/" Home
             li
-              a href="/login" Login
+              a href="/login" Log In
               
     div class="container-fluid"
+		
+			div class="row-fluid"
+				div class="span3"
+					div class="well sidebar-nav"
+						ul class="nav nav-list"
+							li class="nav-header" Sidebar
+							li class="active" 
+								a href="/" CSC-1710
+							li
+								a href="/" CSC-1720
+							li
+								a href="/" CSC-4950
+							li 
+								a href="/" CSC-0001
+				div class="span9"	
+					div class="hero unit"
+						h1 Hello World!
+						p
+							Here is a template for the Course Outcomes Assessment Tool! Playing around.
+						p
+						a class="btn btn-primary btn-large" Click &raquo;
+	
     == yield
