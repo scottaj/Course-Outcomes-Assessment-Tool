@@ -1,5 +1,5 @@
 CourseOutcomes.controllers :homepage do
   get :index do
-    render "home/home"
+    render "homepage/homepage"
   end
 end
