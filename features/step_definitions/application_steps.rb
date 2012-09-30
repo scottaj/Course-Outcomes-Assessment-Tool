@@ -18,6 +18,13 @@ Given /^the user "(.*?)" does not exist$/ do |username|
   User.where(username: username).first.should be_nil
 end
 
+Given /^I am logged in as the user "(.*?)" with the password "(.*?)"$/ do |username, password|
+  visit '/login'
+  fill_in "username", with: username
+  fill_in "password", with: password
+  click_on "Log In"
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, data|
   fill_in field, with: data
 end
