@@ -2,7 +2,6 @@ require File.expand_path('../config/boot.rb', __FILE__)
 require 'padrino-core/cli/rake'
 PadrinoTasks.init
 
-import 'spec/spec.rake'
 import "features/cucumber.rake"
 
 begin
