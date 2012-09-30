@@ -17,6 +17,7 @@ Feature: User Administration
     And I am logged in as the user "manningp" with the password "a1b2c3d4"
     When I click "Admin"
     And I click "Users"
+    Then I should be on "the user administration page"
     And I should see "Username"
     And I should see "First Name"
     And I should see "Last Name"

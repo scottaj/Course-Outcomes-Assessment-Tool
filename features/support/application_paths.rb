@@ -6,6 +6,10 @@ def get_path(path_alias)
     "/login"
   when /the homepage/i
     "/homepage"
+  when /the admin(istration)? page/i
+    "/admin"
+  when /the user admin(istration)? page/i
+    "/admin/user"
   else
     raise "No path for string '#{path_alias}'"
   end

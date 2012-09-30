@@ -25,3 +25,16 @@ body {
 .pushdown {
     padding: 40px;
 }
+
+.navbtn-text {
+    color: white;
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.navlist {
+    list-style-type: none;
+}
