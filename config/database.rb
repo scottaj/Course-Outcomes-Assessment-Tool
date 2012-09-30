@@ -23,7 +23,6 @@ ActiveRecord::Base.configurations[:development] = {
   :password  => '',
   :host      => 'localhost',
   :socket    => '/var/lib/mysql/mysql.sock'
-
 }
 
 ActiveRecord::Base.configurations[:production] = {
@@ -36,7 +35,6 @@ ActiveRecord::Base.configurations[:production] = {
   :password  => '',
   :host      => 'localhost',
   :socket    => '/var/lib/mysql/mysql.sock'
-
 }
 
 ActiveRecord::Base.configurations[:test] = {
@@ -48,8 +46,7 @@ ActiveRecord::Base.configurations[:test] = {
   :username  => 'root',
   :password  => '',
   :host      => 'localhost',
-  :socket    => '/var/lib/mysql/mysql.sock'
-
+  # :socket    => '/var/lib/mysql/mysql.sock'
 }
 
 # Setup our logger
