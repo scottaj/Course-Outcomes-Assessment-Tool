@@ -1,9 +1,9 @@
 div class="row-fluid pushdown"
 div class="row-fluid"
   h2 class="center" Log In
-  - form_tag "/login", method: "post", class: "center form-horizontal well" do
+  - form_tag "", method: "post", class: "center form-horizontal well" do
     - if error
-      p class="login-error" Username or password not found
+      p class="form-error" Username or password not found
     div class="control-group"
       == label_tag :username, class: "control-label"
       div class="controls"

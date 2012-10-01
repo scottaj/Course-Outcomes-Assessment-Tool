@@ -27,12 +27,33 @@ Feature: User Administration
     And I should see "rodgersa"
     And I should see "Aaron"
     And I should see "Rodgers"
-    
-    
+        
   Scenario: Adding a new user
-
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    Then I should be on "the add user page"
+    When I fill in "username" with "ryant"
+    And I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "abcd1234"
+    And I click "Create User"
+    Then I should be on "the user administration page"
+    And I should see "ryant"
+    And I should see "Matt"
+    And I should see "Ryan"
+    
   Scenario: Deleting an existing user
 
+    
   Scenario: Changing an existing user's name
-  
+
+    
   Scenario: Changing an existing user's password

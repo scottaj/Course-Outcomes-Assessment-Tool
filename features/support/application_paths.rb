@@ -10,6 +10,8 @@ def get_path(path_alias)
     "/admin"
   when /the user admin(istration)? page/i
     "/admin/user"
+  when /the add user page/i
+    "/admin/admin/user/create"
   else
     raise "No path for string '#{path_alias}'"
   end

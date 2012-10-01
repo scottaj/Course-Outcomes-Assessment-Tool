@@ -15,7 +15,7 @@ body {
     width: 400px;
 }
 
-.login-error {
+.form-error {
     color: black;
     background-color: pink;
     font-weight: bold;

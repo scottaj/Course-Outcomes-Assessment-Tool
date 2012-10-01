@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_format_of :password, with: /^.*[a-z]+.*$/i, message: "Password must contain one or more letters"
   validates_format_of :password, with: /^.*[0-9\-_\(\)!@#\$%\^&\*\+=~\?`]+.*$/, message: "Password must contain one or more numbers or symbols"
   validates_uniqueness_of :username, message: "A user with this username already exists"
-
+  
   def self.authenticate(username, password)
     user = self.where(username: username).first
     if user and BCrypt::Password.new(user.password) == password
