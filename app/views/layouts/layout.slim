@@ -19,6 +19,8 @@ html
             li
               a href="/admin" Admin
               
+          -if session[:token]
+            p class="navbar-text pull-right" Logged in as #{User.find(session[:token]).name}
+         
     div class="container-fluid"
-	
     == yield
