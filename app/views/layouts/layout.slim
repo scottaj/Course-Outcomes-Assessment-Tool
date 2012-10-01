@@ -16,7 +16,9 @@ html
               a href="/homepage" Home Page
             li
               a href="/login" Login
-              
+          -if session[:token]
+            p class="navbar-text pull-right" Logged in as #{User.find(session[:token]).name}
+         
     div class="container-fluid"
 	
     == yield
