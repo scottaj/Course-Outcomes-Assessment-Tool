@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
     self.password = BCrypt::Password.create(self.password)
   end
 
+  validates_presence_of :username, message: "You must specify a username"
   validates_length_of :password, minimum: 8, message: "Password must be at least 8 characters"
   validates_format_of :password, with: /^.*[a-z]+.*$/i, message: "Password must contain one or more letters"
   validates_format_of :password, with: /^.*[0-9\-_\(\)!@#\$%\^&\*\+=~\?`]+.*$/, message: "Password must contain one or more numbers or symbols"
