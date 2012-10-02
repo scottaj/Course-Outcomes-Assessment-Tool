@@ -1,9 +1,13 @@
 CourseOutcomes.controllers :user, parent: :admin do
   get :create do
-    render "admin/user/create", locals: {page_title: "Create New User"}
+    session[:errors] ||= []
+    errors = session[:errors]
+    session[:errors] = nil
+    render "admin/user/create", locals: {page_title: "Create New User", errors: errors}
   end
 
   post :create do
+    session[:errors] = nil
     user = User.new(username: params[:username],
                     first_name: params[:first_name],
                     last_name: params[:last_name],
@@ -13,7 +17,8 @@ CourseOutcomes.controllers :user, parent: :admin do
       user.save
       redirect "/admin/user"
     else
-      redirect "/admin/admin/user/create?error=true"
+      session[:errors] = user.errors.messages.map{|e, v| v}.flatten
+      redirect "/admin/admin/user/create"
     end
   end
 end

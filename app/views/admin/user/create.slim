@@ -3,17 +3,19 @@ div class="row-fluid"
   div class="span6"
     - form_tag "", method: "post", class: "center form-horizontal well" do
       h2 New User
+      - errors.each do |e|
+        p class="form-error" = e
       div class="row-fluid"
         == label_tag :username, class: "span4"
-        == text_field_tag :username, required: true, class: "span8"
+        == text_field_tag :username, id: :username, required: true, class: "span8"
       div class="row-fluid"
         == label_tag :first_name, class: "span4"
-        == text_field_tag :first_name, required: true, class: "span8"
+        == text_field_tag :first_name, id: :first_name, required: true, class: "span8"
       div class="row-fluid"
         == label_tag :last_name, class: "span4"
-        == text_field_tag :last_name, required: true, class: "span8"
+        == text_field_tag :last_name, id: :last_name, required: true, class: "span8"
       div class="row-fluid"
         == label_tag :password, class: "span4"
-        == password_field_tag :password, required: true, class: "span8"
+        == password_field_tag :password, id: :password, required: true, class: "span8"
       div class="row-fluid"
         == submit_tag "Create User", class: "btn btn-xlarge btn-primary"

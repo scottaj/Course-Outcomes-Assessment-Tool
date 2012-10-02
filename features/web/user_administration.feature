@@ -50,7 +50,80 @@ Feature: User Administration
     And I should see "Matt"
     And I should see "Ryan"
 
-  
+  Scenario: Trying to create a user with an invalid password (too short)
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    When I fill in "username" with "ryant"
+    And I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "p00p"
+    And I click "Create User"
+    Then I should be on "the add user page"
+    And I should see "Password must be at least 8 characters"
+
+  Scenario: Trying to create a user with an invalid password (no letters)
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    When I fill in "username" with "ryant"
+    And I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "01234567"
+    And I click "Create User"
+    Then I should be on "the add user page"
+    And I should see "Password must contain one or more letters"
+
+  Scenario: Trying to create a user with an invalid password (no numbers/symbols)
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    When I fill in "username" with "ryant"
+    And I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "abcdefgh"
+    And I click "Create User"
+    Then I should be on "the add user page"
+    And I should see "Password must contain one or more numbers or symbols"
+
+  Scenario: Trying to create a user without a username
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    When I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "abcdefgh"
+    And I click "Create User"
+    Then I should be on "the add user page"
+    And I should see "You must specify a username"
     
   Scenario: Deleting an existing user
 
