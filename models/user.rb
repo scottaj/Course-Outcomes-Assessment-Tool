@@ -24,4 +24,10 @@ class User < ActiveRecord::Base
   def name()
     return "#{self.first_name} #{self.last_name}"
   end
+	
+	#def authentication_level()
+		#user = User.find(session:token)
+		#errors.add_to_base("Cannot set user level above #{user.level}")
+		#if level > user.level
+	#end
 end
