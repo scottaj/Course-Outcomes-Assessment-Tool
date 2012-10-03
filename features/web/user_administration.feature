@@ -126,7 +126,24 @@ Feature: User Administration
     And I should see "You must specify a username"
     
   Scenario: Deleting an existing user
-
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the following user exists:
+    | username   | rodgersa |
+    | first_name | Aaron    |
+    | last_name  | Rodgers  |
+    | password   | wxyz9876 |
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click the item with attribute "#rodgersa-delete"
+    Then I should be on "the user administration page"
+    And I should not see "rodgersa"
+    And I should not see "Aaron"
+    And I should not see "Rodgers"
     
   Scenario: Changing an existing user's name
 

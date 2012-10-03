@@ -33,6 +33,14 @@ When /^I click "(.*?)"$/ do |item|
   click_on item
 end
 
+When /^I click the item with attribute "(.*?)"$/ do |attr|
+  find(attr).click
+end
+
+Then /^I should not see "(.*?)"$/ do |content|
+  page.should_not have_content(content)
+end
+
 Then /^I should be on "(.*?)"$/ do |page_name|
   current_path.should == get_path(page_name)
 end
