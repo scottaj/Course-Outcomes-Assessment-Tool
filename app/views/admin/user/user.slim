@@ -13,9 +13,9 @@ div class="row-fluid"
           td = user.first_name
           td = user.last_name
           td
-            a href="/admin/user/#{user.username}"
+            a href="/admin/#{user.username}/user" id="#{user.username}-edit"
               i class="icon-pencil"
-            span /
-            a href="/admin/user/delete/#{user.username}"
+            span &#47
+            a href="/admin/#{user.username}/user/delete" id="#{user.username}-delete"
               i class="icon-trash"
     a class="btn btn-primary btn-large" href="/admin/admin/user/create" Add User

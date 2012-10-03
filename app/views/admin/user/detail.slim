@@ -1,0 +1,28 @@
+div class="row-fluid"
+  == partial "/partials/admin/admin_nav"
+  div class="span6"
+    - form_tag "", method: "post", class: "center form-horizontal well" do
+      h3 = user.username
+      - errors.each do |e|
+        p class="form-error" = e
+      div class="row-fluid"
+        == label_tag :first_name, class: "span4"
+        == text_field_tag :first_name, class: "span8", value: user.first_name
+      div class="row-fluid"
+        == label_tag :last_name, class: "span4"
+        == text_field_tag :last_name, class: "span8", value: user.last_name
+      div class="row-fluid"
+        == label_tag :new_password, class: "span4"
+        == text_field_tag :new_password, class: "span8"
+      div class="row-fluid"
+        == submit_tag "Save", class: "btn btn-xlarge btn-primary"
+
+
+
+
+
+
+
+
+
+

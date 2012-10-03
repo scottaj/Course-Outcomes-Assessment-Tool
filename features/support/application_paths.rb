@@ -1,4 +1,4 @@
-def get_path(path_alias)
+def get_path(path_alias, attr = nil)
   case path_alias
   when /the home page/i
     "/"
@@ -12,6 +12,8 @@ def get_path(path_alias)
     "/admin/user"
   when /the add user page/i
     "/admin/admin/user/create"
+  when /the edit user page/i
+    "/admin/#{attr}/user"
   else
     raise "No path for string '#{path_alias}'"
   end
