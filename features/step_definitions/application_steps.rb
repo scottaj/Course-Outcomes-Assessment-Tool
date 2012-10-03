@@ -41,8 +41,12 @@ Then /^I should not see "(.*?)"$/ do |content|
   page.should_not have_content(content)
 end
 
-Then /^I should be on "(.*?)"$/ do |page_name|
-  current_path.should == get_path(page_name)
+Then /^I should be on "([^\"]*?)" with attribute "(.*?)"$/ do |page_name, attr|
+  current_path.should match(get_path(page_name, attr))
+end
+
+Then /^I should be on "([^\"]*?)"$/ do |page_name|
+  current_path.should match(get_path(page_name))
 end
 
 Then /^I should see "(.*?)"$/ do |content|

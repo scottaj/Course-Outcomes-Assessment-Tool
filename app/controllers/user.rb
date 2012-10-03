@@ -1,7 +1,25 @@
 CourseOutcomes.controllers :user, parent: :admin do
+
+  get :index do
+    user = User.where(username: params[:admin_id]).first
+    errors = session[:errors] || []
+    session[:errors] = nil
+    render "admin/user/detail", locals: {page_title: user.name, user: user, errors: errors}
+  end
+
+  post :index do
+    user = User.where(username: params[:admin_id]).first
+    user.first_name = params[:first_name]
+    user.last_name = params[:last_name]
+    user.password = params[:new_password] unless params[:new_password].empty?
+    user.save
+
+    session[:errors] = get_ar_errors(user)
+    redirect "admin/#{params[:admin_id]}/user"
+  end
+  
   get :create do
-    session[:errors] ||= []
-    errors = session[:errors]
+    errors = session[:errors] || []
     session[:errors] = nil
     render "admin/user/create", locals: {page_title: "Create New User", errors: errors}
   end
@@ -17,7 +35,7 @@ CourseOutcomes.controllers :user, parent: :admin do
       user.save
       redirect "/admin/user"
     else
-      session[:errors] = user.errors.messages.map{|e, v| v}.flatten
+      session[:errors] = get_ar_errors(user)
       redirect "/admin/admin/user/create"
     end
   end
