@@ -11,12 +11,8 @@ class CourseOutcomes < Padrino::Application
   layout :layout
   
   get :index do
-   render "index", locals: {page_title: "UDM COAT"}
+   redirect "/homepage"
   end
-	
-	get '/' do
-		redirect '/homepage'
-	end
 	
 	get '/logout' do
 		session.clear
