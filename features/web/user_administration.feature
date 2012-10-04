@@ -44,6 +44,7 @@ Feature: User Administration
     And I fill in "first_name" with "Matt"
     And I fill in "last_name" with "Ryan"
     And I fill in "password" with "abcd1234"
+    And I fill in "password_confirmation" with "abcd1234"
     And I click "Create User"
     Then I should be on "the user administration page"
     And I should see "ryant"
@@ -68,6 +69,26 @@ Feature: User Administration
     And I click "Create User"
     Then I should be on "the add user page"
     And I should see "Password must be at least 8 characters"
+    
+  Scenario: Trying to create a user with an invalid password (password confirmation failed)
+    Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the user "ryant" does not exist
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click "Add User"
+    When I fill in "username" with "ryant"
+    And I fill in "first_name" with "Matt"
+    And I fill in "last_name" with "Ryan"
+    And I fill in "password" with "4321poop"
+    And I fill in "password_confirmation" with "1234poop"
+    And I click "Create User"
+    Then I should be on "the add user page"
+    And I should see "Entered password does not match"
 
   Scenario: Trying to create a user with an invalid password (no letters)
     Given the following user exists:
@@ -173,3 +194,4 @@ Feature: User Administration
     
     
   Scenario: Changing an existing user's password
+ 

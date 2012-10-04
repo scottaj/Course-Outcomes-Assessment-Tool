@@ -11,7 +11,10 @@ CourseOutcomes.controllers :user, parent: :admin do
     user = User.where(username: params[:admin_id]).first
     user.first_name = params[:first_name]
     user.last_name = params[:last_name]
-    user.password = params[:new_password] unless params[:new_password].empty?
+    unless params[:new_password].empty?
+    user.password = params[:new_password]
+    user.password_confirmation = params[:password_confirmation]
+    end
     user.save
 
     session[:errors] = get_ar_errors(user)
@@ -29,7 +32,8 @@ CourseOutcomes.controllers :user, parent: :admin do
     user = User.new(username: params[:username],
                     first_name: params[:first_name],
                     last_name: params[:last_name],
-                    password: params[:password])
+                    password: params[:password],
+                    password_confirmation: params[:password_confirmation])
 
     if user.valid?
       user.save

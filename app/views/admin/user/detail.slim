@@ -13,7 +13,10 @@ div class="row-fluid"
         == text_field_tag :last_name, class: "span8", value: user.last_name
       div class="row-fluid"
         == label_tag :new_password, class: "span4"
-        == text_field_tag :new_password, class: "span8"
+        == password_field_tag :new_password, class: "span8"
+      div class="row-fluid"
+        == label_tag :password_confirmation, class: "span4"
+        == password_field_tag :password_confirmation, class: "span8"
       div class="row-fluid"
         == submit_tag "Save", class: "btn btn-xlarge btn-primary"
 

@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+  attr_accessor :password_confirmation
   before_save do
     self.password = BCrypt::Password.create(self.password)
   end
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
   validates_format_of :password, with: /^.*[a-z]+.*$/i, message: "Password must contain one or more letters"
   validates_format_of :password, with: /^.*[0-9\-_\(\)!@#\$%\^&\*\+=~\?`]+.*$/, message: "Password must contain one or more numbers or symbols"
   validates_uniqueness_of :username, message: "A user with this username already exists"
+  validates_confirmation_of :password, message: "Entered password does not match"
   
   def self.authenticate(username, password)
     user = self.where(username: username).first
