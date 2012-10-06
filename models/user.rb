@@ -2,7 +2,10 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+  has_many :courses, inverse_of: :users
+  
   attr_accessor :password_confirmation
+
   before_save do
     self.password = BCrypt::Password.create(self.password)
   end
