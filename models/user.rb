@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
-  has_many :courses, inverse_of: :users
+  has_many :courses, dependent: :nullify, inverse_of: :professor
   
   attr_accessor :password_confirmation
 
