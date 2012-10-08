@@ -194,4 +194,26 @@ Feature: User Administration
     
     
   Scenario: Changing an existing user's password
+      Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the following user exists:
+    | username   | rodgersa |
+    | first_name | Aaron    |
+    | last_name  | Rodgers  |
+    | password   | wxyz9876 |
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click the item with attribute "#rodgersa-edit"
+    Then I should be on "the edit user page" with attribute "rodgersa"
+    And I should see "New password"
+    And I should see "Password confirmation"
+    When I fill in "new_password" with "9876wxyz"
+    And I fill in "password_confirmation" with "9876wxyz"
+    And I click "Save"
+    Then I should be on "the edit user page" with attribute "rodgersa"
+    And I should see "rodgersa"
  

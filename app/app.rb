@@ -13,6 +13,10 @@ class CourseOutcomes < Padrino::Application
   get :index do
    redirect "/homepage"
   end
+  
+  before /^(?!\/(login)).*$/i do
+    redirect '/login' unless session[:token]
+  end
 	
 	get '/logout' do
 		session.clear
