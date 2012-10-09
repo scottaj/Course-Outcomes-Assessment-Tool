@@ -7,7 +7,7 @@ div class="row-fluid"
         th First Name
         th Last Name
         th Active
-        th Edit/Delete
+        th Edit/Deactivate
       - User.all.sort_by {|u| u.username}.each do |user|
         tr
           td = user.username

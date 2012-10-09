@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   before_save do
     self.password = BCrypt::Password.create(self.password)
   end
+	
+	before_create do
+		self.active = true
+	end
 
   validates_presence_of :username, message: "You must specify a username"
   validates_length_of :password, minimum: 8, message: "Password must be at least 8 characters"

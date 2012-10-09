@@ -45,8 +45,7 @@ CourseOutcomes.controllers :user, parent: :admin do
   end
 
   get :delete do
-    logger.info params[:user_id]
-    user = User.find_by_username(params [:user_id])
+    user = User.find_by_username(params[:admin_id])
     user.active = false
     user.save
     redirect "/admin/user"
