@@ -1,11 +1,13 @@
 User.create(username: "tebowt",
             first_name: "Tim",
             last_name: "Tebow",
-            password: "abcd1234")
+            password: "abcd1234",
+            active: true)
 User.create(username: "riversp", 
             first_name: "Phillip",  
             last_name: "Rivers", 
-            password: "1234abcd")
+            password: "1234abcd",
+            active: true)
 
 Course.create(course_title: "CSSE 171",
               course_name: "Intro Programming I",

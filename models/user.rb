@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   before_save do
     self.password = BCrypt::Password.create(self.password)
   end
+	
+	before_create do
+		self.active = true
+	end
 
   validates_presence_of :username, message: "You must specify a username"
   validates_length_of :password, minimum: 8, message: "Password must be at least 8 characters"
@@ -18,7 +22,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "Entered password does not match"
   
   def self.authenticate(username, password)
-    user = self.where(username: username).first
+    user = self.find_by_username_and_active(username, true)
     if user and BCrypt::Password.new(user.password) == password
       return user.id
     else

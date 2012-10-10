@@ -6,12 +6,14 @@ div class="row-fluid"
         th Username
         th First Name
         th Last Name
-        th Edit/Delete
+        th Active
+        th Edit/Deactivate
       - User.all.sort_by {|u| u.username}.each do |user|
         tr
           td = user.username
           td = user.first_name
           td = user.last_name
+          td = user.active ? "Yes" : "No"
           td
             a href="/admin/#{user.username}/user" id="#{user.username}-edit"
               i class="icon-pencil"
