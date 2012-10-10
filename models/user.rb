@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "Entered password does not match"
   
   def self.authenticate(username, password)
-    user = self.where(username: username, active: true).first
+    user = self.find_by_username_and_active(username, true)
     if user and BCrypt::Password.new(user.password) == password
       return user.id
     else

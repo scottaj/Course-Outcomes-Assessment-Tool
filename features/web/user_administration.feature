@@ -51,6 +51,7 @@ Feature: User Administration
     And I should see "Matt"
     And I should see "Ryan"
 
+    
   Scenario: Trying to create a user with an invalid password (too short)
     Given the following user exists:
     | username   | manningp |

@@ -1,14 +1,14 @@
 CourseOutcomes.controllers :user, parent: :admin do
 
   get :index do
-    user = User.where(username: params[:admin_id]).first
+    user = User.find_by_username(params[:admin_id])
     errors = session[:errors] || []
     session[:errors] = nil
     render "admin/user/detail", locals: {page_title: user.name, user: user, errors: errors}
   end
 
   post :index do
-    user = User.where(username: params[:admin_id]).first
+    user = User.find_by_username(params[:admin_id])
     user.first_name = params[:first_name]
     user.last_name = params[:last_name]
     unless params[:new_password].empty?

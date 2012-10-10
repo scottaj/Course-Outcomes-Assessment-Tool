@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 # Defines our constants
 PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'development'  unless defined?(PADRINO_ENV)
@@ -8,6 +9,8 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 require 'set'
+require 'bcrypt'
+
 
 ##
 # ## Enable devel logging
