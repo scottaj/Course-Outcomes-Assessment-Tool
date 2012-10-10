@@ -34,6 +34,10 @@ Given /^the following course exists:$/ do |table|
   course.save
 end
 
+When /^I select "(.*?)" for "(.*?)"$/ do |content, select|
+  page.select content, from: select
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, data|
   fill_in field, with: data
 end

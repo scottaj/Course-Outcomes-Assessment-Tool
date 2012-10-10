@@ -8,6 +8,7 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 require 'set'
+require 'date'
 
 ##
 # ## Enable devel logging

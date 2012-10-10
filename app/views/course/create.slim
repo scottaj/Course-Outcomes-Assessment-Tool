@@ -1,0 +1,27 @@
+div class="row-fluid"
+  == partial "/partials/admin/admin_nav"
+  div class="span6"
+    - form_tag "", method: "post", class: "center form-inline well" do
+      h2 New Course
+      - errors.each do |e|
+        p class="form-error" = e
+      div class="row-fluid"
+        == label_tag :course_title, class: "span4"
+        == text_field_tag :course_title, id: :course_title, required: true, class: "span8"
+      div class="row-fluid"
+        == label_tag :section, class: "span4"
+        == text_field_tag :section, id: :section, required: true, pattern: "\\d+", value: "1", class: "span8"
+      div class="row-fluid"
+        == label_tag :course_name, class: "span4"
+        == text_field_tag :course_name, id: :course_name, required: true, class: "span8"
+      div class="row-fluid"
+        == label_tag :term_number, class: "span4"
+        == text_field_tag :term_number, id: :term_number, required: true, pattern: "\\d+", class: "span8"
+      div class="row-fluid"
+        == label_tag :term_year, class: "span4"
+        == select_tag :term_year, id: :term_year, options: dates, selected: Date.today.year, required: true
+      div class="row-fluid"
+        == label_tag :professor, class: "span4"
+        == select_tag :professor, id: :professor, options:professors, include_blank: true, required: true
+      div class="row-fluid"
+        == submit_tag "Create Course", class: "btn btn-xlarge btn-primary"

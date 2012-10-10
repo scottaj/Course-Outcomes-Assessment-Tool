@@ -23,4 +23,51 @@ describe "Course Model" do
       course.reload.user_id.should be_nil
     end
   end
+
+  describe "validation" do
+    describe "required fields" do
+
+      before :each do
+        User.create(username: "willisb",
+                    first_name: "Bruce",
+                    last_name: "Willis",
+                    password: "abcd1234")
+        @course = Course.new(course_title: "AK 470",
+                             course_name: "Advanced Balding",
+                             term_number: 1,
+                             term_year: 2012,
+                             professor: User.find_by_username("willisb"))
+      end
+    
+      it "should require a course name" do
+        @course.should be_valid
+        @course.course_name = nil
+        @course.should_not be_valid
+      end
+
+      it "should require a course title" do
+        @course.should be_valid
+        @course.course_title = nil
+        @course.should_not be_valid
+      end
+
+      it "should require a term number" do
+        @course.should be_valid
+        @course.term_number = nil
+        @course.should_not be_valid
+      end
+
+      it "should require a term year" do
+        @course.should be_valid
+        @course.term_year = nil
+        @course.should_not be_valid
+      end
+
+      it "should require a professor" do
+        @course.should be_valid
+        @course.professor = nil
+        @course.should_not be_valid
+      end
+    end
+  end
 end
