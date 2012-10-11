@@ -1,5 +1,3 @@
-
-
 class User < ActiveRecord::Base
 
   has_many :courses, dependent: :nullify, inverse_of: :professor
@@ -9,10 +7,10 @@ class User < ActiveRecord::Base
   before_save do
     self.password = BCrypt::Password.create(self.password)
   end
-	
-	before_create do
-		self.active = true
-	end
+  
+  before_create do
+    self.active = true
+  end
 
   validates_presence_of :username, message: "You must specify a username"
   validates_length_of :password, minimum: 8, message: "Password must be at least 8 characters"
@@ -32,11 +30,5 @@ class User < ActiveRecord::Base
   
   def name()
     return "#{self.first_name} #{self.last_name}"
-  end
-	
-	#def authentication_level()
-		#user = User.find(session:token)
-		#errors.add_to_base("Cannot set user level above #{user.level}")
-		#if level > user.level
-	#end
+  end	
 end
