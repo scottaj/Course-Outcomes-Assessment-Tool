@@ -38,3 +38,7 @@ body {
 .navlist {
     list-style-type: none;
 }
+
+.archived-course {
+    background-color: pink;
+}

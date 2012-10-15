@@ -38,6 +38,10 @@ When /^I select "(.*?)" for "(.*?)"$/ do |content, select|
   page.select content, from: select
 end
 
+When /^I refresh the page$/ do
+  visit current_path
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, data|
   fill_in field, with: data
 end
@@ -56,6 +60,10 @@ end
 
 Then /^I should see the following:$/ do |table|
   table.raw.flatten.each {|content| page.should have_content(content)}
+end
+
+Then /^I should not see the following:$/ do |table|
+  table.raw.flatten.each {|content| page.should_not have_content(content)}
 end
 
 Then /^I should be on "([^\"]*?)" with attribute "(.*?)"$/ do |page_name, attr|

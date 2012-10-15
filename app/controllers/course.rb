@@ -23,4 +23,17 @@ CourseOutcomes.controllers :course do
       session[:errors] = get_ar_errors(course)
     end
   end
+
+  get :archive, with: :course_id do
+    course = Course.find(params[:course_id])
+    course.archived = !course.archived
+    course.save
+    redirect "/admin/courses"
+  end
+
+  get :archived do
+    courses = get_all_courses(true)
+    return partial "/partials/course/course_table", locals: {courses: courses}
+  end
+
 end

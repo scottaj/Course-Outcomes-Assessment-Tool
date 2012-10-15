@@ -69,5 +69,26 @@ describe "Course Model" do
         @course.should_not be_valid
       end
     end
+    describe "uniqueness constraints" do
+      it "Should mark two records with the same course title, term year, term number, and section invalid" do
+        User.create(username: "schwarza",
+                    first_name: "Arnold",
+                    last_name: "Schwarzenegger",
+                    password: "qwer9876")
+        Course.create(course_title: "ACT 101",
+                      course_name: "Lame One-liners",
+                      term_number: 1,
+                      term_year: 2012,
+                      section: 2,
+                      professor: User.find_by_username("schwarza"))
+        c = Course.new(course_title: "ACT 101",
+                       course_name: "Lame One-liners",
+                       term_number: 1,
+                       term_year: 2012,
+                       section: 2,
+                       professor: User.find_by_username("schwarza"))
+        c.should_not be_valid
+      end
+    end
   end
 end
