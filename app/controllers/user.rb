@@ -43,11 +43,12 @@ CourseOutcomes.controllers :user, parent: :admin do
       redirect "/admin/admin/user/create"
     end
   end
-
+    
   get :delete do
     user = User.find_by_username(params[:admin_id])
     user.active = false
     user.save
+    User.find_by_active(false)
     redirect "/admin/user"
   end
 end
