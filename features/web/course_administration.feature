@@ -134,7 +134,7 @@ Feature: Course Administration
     And I should not see "QB 101"
 
   @javascript  
-  Scenario: Viewing archived courses
+  Scenario: Viewing and hiding archived courses
     Given the following user exists:
     | username   | staffordm |
     | first_name | Matthew   |
@@ -167,7 +167,14 @@ Feature: Course Administration
     | Term 1 2011        |
     | Hide Archived      |
     | Archived Courses   |
-
+    And I click "Hide Archived"
+    Then I should not see the following:
+    | QB 240             |
+    | Not Getting Sacked |
+    | Term 1 2011        |
+    | Archived Courses   |
+    And I should see "Show Archived"
+    
   @javascript
   Scenario: Unarchiving courses
     Given the following user exists:
