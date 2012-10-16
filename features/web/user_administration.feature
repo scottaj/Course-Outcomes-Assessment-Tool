@@ -2,7 +2,8 @@ Feature: User Administration
   In order to facilitate access to the system
   As an administrator
   I need to be able to create, modify and delete users
-
+  
+  
   Scenario: Viewing current users
     Given the following user exists:
     | username   | manningp |
@@ -201,7 +202,7 @@ Feature: User Administration
     And I should see "Harry"
     And I should see "Truman"
     
-    
+   
   Scenario: Changing an existing user's password
       Given the following user exists:
     | username   | manningp |
