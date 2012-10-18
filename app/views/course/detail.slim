@@ -1,0 +1,34 @@
+div class="row-fluid"
+  == partial "/partials/admin/admin_nav"
+  div class="span6"
+    - form_tag "", method: "post", class: "center form-horizontal well" do
+      h2 Course Details
+      - errors.each do |e|
+        p class="form-error" = e
+      div class="control-group"
+        == label_tag :course_title, class: "control-label"
+        div class="controls"
+          == text_field_tag :course_title, id: :course_title, value: course.course_title, required: true
+      div class="control-group"
+        == label_tag :section, class: "control-label"
+        div class="controls"
+          == text_field_tag :section, id: :section, value: course.section, required: true
+      div class="control-group"
+        == label_tag :course_name, class: "control-label"
+        div class="controls"
+          == text_field_tag :course_name, id: :course_name, value: course.course_name, required: true
+      div class="control-group"
+        == label_tag :term_number, class: "control-label"
+        div class="controls"
+          == text_field_tag :term_number, id: :term_number, value: course.term_number, required: true
+      div class="control-group"
+        == label_tag :term_year, class: "control-label"
+        div class="controls"
+          == select_tag :term_year, id: :term_year, options: years, selected: course.term_year, required: true
+      div class="control-group"
+        == label_tag :professor, class: "control-label"
+        div class="controls"
+          == select_tag :professor, id: :professor, options: User.find_all_by_active(true).map {|u| [u.name, u.username]}, required: true
+      div class="control-group"
+        div class="controls"
+          == submit_tag "Save", class: "btn btn-xlarge btn-primary"

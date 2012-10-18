@@ -134,7 +134,7 @@ Feature: Course Administration
     And I should not see "QB 101"
 
   @javascript  
-  Scenario: Viewing archived courses
+  Scenario: Viewing and hiding archived courses
     Given the following user exists:
     | username   | staffordm |
     | first_name | Matthew   |
@@ -167,7 +167,14 @@ Feature: Course Administration
     | Term 1 2011        |
     | Hide Archived      |
     | Archived Courses   |
-
+    And I click "Hide Archived"
+    Then I should not see the following:
+    | QB 240             |
+    | Not Getting Sacked |
+    | Term 1 2011        |
+    | Archived Courses   |
+    And I should see "Show Archived"
+    
   @javascript
   Scenario: Unarchiving courses
     Given the following user exists:
@@ -198,3 +205,38 @@ Feature: Course Administration
     | Term 1 2011        |
     | QB 240             |
     | Not Getting Sacked |
+
+  Scenario: Editing a course
+    Given the following user exists:
+    | username   | staffordm |
+    | first_name | Matthew   |
+    | last_name  | Stafford  |
+    | password   | a1b2c3d4  |
+    And the following user exists:
+    | username   | ryanm     |
+    | first_name | Matt      |
+    | last_name  | Ryan      |
+    | password   | qwer1234  |
+    And the following course exists:
+    | course_name  |  Throwing |
+    | course_title |    QB 101 |
+    | term_number  |         1 |
+    | term_year    |      2012 |
+    | professor    | staffordm |
+    And I am logged in as the user "staffordm" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Courses"
+    And I click the item with attribute "#qb101-1-1-2012-edit"
+    Then I should be on "the edit course page"
+    When I fill in "Course name" with "Missing"
+    And I fill in "Course title" with "QB 010"
+    And I fill in "Term number" with "2"
+    And I select "2013" for "Term year"
+    And I select "Matt Ryan" for "Professor"
+    And I click "Save"
+    Then I should be on "the course administration page"
+    And I should see the following:
+    | Missing     |
+    | QB 010      |
+    | Term 2 2013 |
+    | Matt Ryan   |

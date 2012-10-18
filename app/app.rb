@@ -3,7 +3,7 @@ class CourseOutcomes < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
-	
+  
 
   Slim::Engine.set_default_options :pretty => true
   
@@ -11,16 +11,16 @@ class CourseOutcomes < Padrino::Application
   layout :layout
   
   get :index do
-   redirect "/homepage"
+    redirect "/homepage"
   end
   
   before /^(?!\/(login)).*$/i do
     redirect '/login' unless session[:token]
   end
-	
-	get '/logout' do
-		session.clear
-		redirect '/homepage'
-	end
+  
+  get '/logout' do
+    session.clear
+    redirect '/login'
+  end
 end
 
