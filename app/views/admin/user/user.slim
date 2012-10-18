@@ -1,29 +1,8 @@
 div class="row-fluid"
   == partial "/partials/admin/admin_nav"
-  div class="span6"
-    table class="table table-striped table-bordered"
-      tr
-        th Username
-        th First Name
-        th Last Name
-        th Active
-        th Edit/Deactivate
-         
-      - User.all.sort_by {|u| u.username}.each do |user|
-        tr
-          td = user.username
-          td = user.first_name
-          td = user.last_name
-          td = user.active ? "Yes" : "No"
-          td
-            a href="/admin/#{user.username}/user" id="#{user.username}-edit"
-              i class="icon-pencil"
-            span &#47
-            a href="/admin/#{user.username}/user/delete" id="#{user.username}-delete"
-              i class="icon-trash"
-    a class="btn btn-primary btn-large" href="/admin/admin/user/create" Add User
-    div class="span10"
-      a class="btn btn-primary btn-large" href="/admin/admin/user/reactivate" Reactivate User
-      
-      
-    
+  div class="span6" id="center-box"
+    == partial "/partials/admin/user_table", locals: {users: users}
+    div class="row-fluid"
+      a class="btn btn-primary btn-large" href="/admin/admin/user/create" Add User
+      span class="span6"
+      button id="reactivate-button" onclick="show_deactivated_users();" class="span3 btn btn-large btn-success" Reactivate
