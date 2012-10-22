@@ -37,5 +37,7 @@ function hide_archived_courses() {
 };
 
 function hide_deactivated_users() {
-$("#deactivated-users").toggle();
+  $("#deactivated-users").remove()
+  $("#reactivate-button").click(show_deactivated_users);
+  $("#reactivate-button").text("Show Deactivated");
 };

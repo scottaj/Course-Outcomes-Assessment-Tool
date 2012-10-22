@@ -1,16 +1,13 @@
 div class="container-fluid"
-	div class="row-fluid"
-		div class="span3"
-			div class="well sidebar-nav"
-				ul class="nav nav-list"
-					li class="nav-header" Courses
-					li
-						a href="/CSSE4950" CSSE-4950
-					li
-						a href="/CSSE4570" CSSE-4570
-					li
-						a href="/CSSE4440" CSSE-4440
-					li
-					
-						
-					
+  div class="row-fluid"
+    div class="span3"
+      div class="well sidebar-nav"
+        ul class="nav nav-list"
+          li class="nav-header" Courses
+          - if courses.empty?
+            li No courses available.
+          - courses.each do |course|
+            li
+              a href="/courses/#{course.id}" #{course.course_title}-#{course.section}
+
+
