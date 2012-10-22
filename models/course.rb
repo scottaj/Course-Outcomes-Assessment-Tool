@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
   belongs_to :professor, class_name: "User", foreign_key: "user_id", inverse_of: :courses
+  has_and_belongs_to_many :students, class_name: "Student"
+  
 
   has_many :outcomes, dependent: :nullify, inverse_of: :course
   

@@ -54,6 +54,10 @@ When /^I click the item with attribute "(.*?)"$/ do |attr|
   find(attr).click
 end
 
+When /^I log out$/ do |item|
+  find("Logout").click
+end
+
 Then /^I should not see "(.*?)"$/ do |content|
   page.should_not have_content(content)
 end

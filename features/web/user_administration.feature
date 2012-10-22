@@ -203,7 +203,32 @@ Feature: User Administration
     And I should see "Truman"
     
    
-  Scenario: Changing an existing user's password
+  Scenario: Reactivating a user
+      Given the following user exists:
+    | username   | manningp |
+    | first_name | Peyton   |
+    | last_name  | Manning  |
+    | password   | a1b2c3d4 |
+    And the following user exists:
+    | username   | rodgersa |
+    | first_name | Aaron    |
+    | last_name  | Rodgers  |
+    | password   | wxyz9876 |
+    And I am logged in as the user "manningp" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Users"
+    And I click the item with attribute "#rodgersa-delete"
+    Then I should be on "the user page"
+    And I should see "Reactivate"
+    And I should see "Add User"
+    When I click "Reactivate"
+    And I click "#rodgersa-delete"
+    Then I should be on "the user page" with attribute "rodgersa"
+    When I log out
+    And I am logged in as the user "rodgersa" with the password "wxyz9876"
+    Then I should be on "the homepage"
+    
+    Scenario: Changing an existing user's password
       Given the following user exists:
     | username   | manningp |
     | first_name | Peyton   |
@@ -226,4 +251,5 @@ Feature: User Administration
     And I click "Save"
     Then I should be on "the edit user page" with attribute "rodgersa"
     And I should see "rodgersa"
+
  
