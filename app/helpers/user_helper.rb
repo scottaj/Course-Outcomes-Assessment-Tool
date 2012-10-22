@@ -6,4 +6,8 @@ CourseOutcomes.helpers do
   def get_ar_errors(ar_object)
     return ar_object.errors.messages.map{|e, v| v}.flatten 
   end
+  
+  def get_all_users(deactivated)
+    deactivated = User.find_all_by_active(deactivated)
+  end
 end

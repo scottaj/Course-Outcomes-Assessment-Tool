@@ -46,9 +46,19 @@ CourseOutcomes.controllers :user, parent: :admin do
     
   get :delete do
     user = User.find_by_username(params[:admin_id])
-    user.active = false
-    user.save
-    User.find_by_active(false)
-    redirect "/admin/user"
+    if user.active == false
+      user.active = true
+      user.save
+      redirect "/admin/user"
+    else
+      user.active = false
+      user.save
+      redirect "/admin/user"
+    end
+  end
+    
+  get :deactivated do
+    deactivated = get_all_users(false)
+    return partial "/partials/admin/user_table", locals: {users: deactivated}
   end
 end
