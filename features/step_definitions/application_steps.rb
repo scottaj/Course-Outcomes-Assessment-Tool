@@ -50,12 +50,16 @@ When /^I click "(.*?)"$/ do |item|
   click_on item
 end
 
+When /^I click on "(.*?)"$/ do |selector|
+  page.execute_script("jQuery(#{selector.to_json}).click();") #This line allows you to call a jQuery click event on any object on the page.
+end
+
 When /^I click the item with attribute "(.*?)"$/ do |attr|
   find(attr).click
 end
 
 When /^I log out$/ do |item|
-  find("Logout").click
+	find("Logout").click
 end
 
 Then /^I should not see "(.*?)"$/ do |content|
