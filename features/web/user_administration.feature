@@ -169,9 +169,11 @@ Feature: User Administration
     And I click "Users"
     And I click the item with attribute "#rodgersa-delete"
     Then I should be on "the user administration page"
-		When I click on "Show Deactivated"
+		When I click "Show Deactivated"
 		Then I should see "Active"
     And I should see "Deactivated Users"
+    And I should see "Aaron"
+    And I should see "Rodgers"
 		
 		
     
@@ -201,7 +203,7 @@ Feature: User Administration
     And I should see "Harry"
     And I should see "Truman"
     
-   
+   @javascript
   Scenario: Reactivating a user
       Given the following user exists:
     | username   | manningp |
@@ -220,8 +222,8 @@ Feature: User Administration
     Then I should be on "the user administration page"
     And I should see "Show Deactivated"
     And I should see "Add User"
-    When I click on "Show Deactivated"
-    And I click "#rodgersa-delete"
+    When I click "Show Deactivated"
+    And I click the item with attribute "#rodgersa-delete"
     Then I should be on "the user administration page" with attribute "rodgersa"
     When I log out
     And I am logged in as the user "rodgersa" with the password "wxyz9876"
