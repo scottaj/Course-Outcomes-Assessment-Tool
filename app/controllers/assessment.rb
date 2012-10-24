@@ -1,22 +1,12 @@
 CourseOutcomes.controllers :assessment do
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
-
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
-  
+  get :index, with: :course_id do
+    course = Course.find(params[:course_id])
+    outcomes = Outcome.find_all_by_course_id(course.id, order: "enum DESC")
+    
+    render "/assessment/course", locals: {
+      page_title: "#{course.course_title}-#{course.section}",
+      course: course,
+      outcomes: outcomes
+    }
+  end
 end

@@ -9,6 +9,8 @@ Given /^the following user exists:$/ do |table|
   user = User.new
   
   user_attr.each {|attr, value| user[attr] = value}
+
+  user.should be_valid
   user.save
 end
 
@@ -31,7 +33,20 @@ Given /^the following course exists:$/ do |table|
   course_attr["professor"] = User.find_by_username(course_attr["professor"])
   
   course_attr.each {|attr, value| course.send(:"#{attr}=", value)}
+
+  course.should be_valid
   course.save
+end
+
+Given /^the following outcome exists:$/ do |table|
+  outcome_attr = table.rows_hash
+  outcome = Outcome.new
+
+  outcome_attr["course"] = Course.find_by_course_title(outcome_attr["course"])
+
+  outcome_attr.each {|attr, value| outcome.send(:"#{attr}=", value)}
+  outcome.should be_valid
+  outcome.save
 end
 
 When /^I select "(.*?)" for "(.*?)"$/ do |content, select|

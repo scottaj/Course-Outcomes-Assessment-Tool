@@ -2,7 +2,8 @@ class Outcome < ActiveRecord::Base
   belongs_to :course, class_name: "Course", foreign_key: "course_id", inverse_of: :outcomes
 
   validates_uniqueness_of :enum, scope: :course_id
-
+  validates_presence_of :course
+  
   before_create do
     self.enum ||= generate_enum()
   end
