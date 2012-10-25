@@ -29,15 +29,15 @@ function show_deactivated_users() {
 
 function hide_archived_courses() {
   // Remove archived course listing.
-  $("#archived-courses").remove();
-
+  $("#archived-courses").toggle();
   // Change button text and bind it to new function
-  $("#archive-button").click(show_archived_courses);
-  $("#archive-button").text("Show Archived");
+ text = $("#archive-button").text() === "Show Archived" ? "Hide Archived" : "Show Archived"
+  $("#archive-button").text(text);
 };
 
 function hide_deactivated_users() {
-  $("#deactivated-users").remove()
-  $("#reactivate-button").click(show_deactivated_users);
-  $("#reactivate-button").text("Show Deactivated");
+  $("#deactivated-users").toggle();
+  //$("#reactivate-button").click(show_deactivated_users);
+  text = $("#reactivate-button").text() === "Show Deactivated" ? "Hide Deactivated" : "Show Deactivated"
+  $("#reactivate-button").text(text);
 };

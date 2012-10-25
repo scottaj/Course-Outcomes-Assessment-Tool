@@ -2,7 +2,7 @@ CourseOutcomes.controllers :student, parent: :admin do
 
   get :index do
     user = User.find_by_student_id(params[:student_id])
-    render "admin/student"
+    render "admin/student", locals {page_title: "Students List"}
   end
 
   post :index do
@@ -12,24 +12,19 @@ CourseOutcomes.controllers :student, parent: :admin do
     student.student_id = params[:student_id]
     student.save
   end
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
-
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
   
+  get :create do
+    render "student/create", locals: {page_title: "New Student"}
+  end
+  
+  post :create do
+  #session[:errors] = nil
+    student = Student.new(first_name: params[:first_name],
+                          last_name: params[:last_name],
+                          student_id: params[:student_id])
+    if student.valid?
+    student.save
+    redirect "/admin/student"
+  end
+
 end

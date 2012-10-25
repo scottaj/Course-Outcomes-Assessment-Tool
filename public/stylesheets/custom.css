@@ -42,3 +42,9 @@ body {
 .archived-course {
     background-color: pink;
 }
+
+.btn-success {
+ float: left;
+}
+
+

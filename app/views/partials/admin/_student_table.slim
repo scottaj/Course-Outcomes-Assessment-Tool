@@ -6,13 +6,12 @@ div class="span10"
     th T-Number
     th Edit
     
-    -Student.all.sort_by {|s| s.student_id}.each do |student|
+    -Student.all.sort_by {|s| s.last_name}.each do |student|
       tr
         td = student.first_name
         td = student.last_name
         td = student.student_id
         td
-          a href = "/admin/student" id="test-edit"
+          a href="/admin/student/edit" id="test-edit"
             i class="icon-pencil"
-          span &#47
-  a class="btn btn-primary btn-large" href="/admin/student" Student Button
+  a class="btn btn-primary btn-large" href="/student/create" New Student
