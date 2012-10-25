@@ -24,3 +24,6 @@ Course.create(course_title: "CSSE 171",
               term_number: 1,
               term_year: 2013,
               professor: User.find_by_username("tebowt"))
+Student.create(first_name: "Will",
+               last_name: "Smith",
+               student_id: "10101001")

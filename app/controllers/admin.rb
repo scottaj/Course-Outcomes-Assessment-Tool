@@ -19,4 +19,7 @@ CourseOutcomes.controllers :admin do
     render "admin/courses", locals: {page_title: "Course Administration", courses: courses}
   end
   
+  get :students do
+    render "admin/student", locals: {page_title: "Students"}
+  end
 end

@@ -1,0 +1,19 @@
+div class="row-fluid"
+  div class="span10"
+    table class="table table-striped table-bordered"
+      tr
+        th First Name
+        th Last Name
+        th T-Number
+        th Edit
+        
+        -Student.all.sort_by {|s| s.student_id}.each do |student|
+          tr
+            td = student.first_name
+            td = student.last_name
+            td = student.student_id
+            td
+              a href="/admin/student" id="test-edit"
+                i class="icon-pencil"
+              span &#47
+    a class="btn btn-primary btn-large" href="/admin/student" Student Button
