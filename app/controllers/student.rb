@@ -1,8 +1,8 @@
-CourseOutcomes.controllers :student, parent: :admin do
+﻿CourseOutcomes.controllers :student do
 
   get :index do
-    user = User.find_by_student_id(params[:student_id])
-    render "admin/student", locals {page_title: "Students List"}
+    student = Student.find_by_student_id(params[:student_id])
+    render "admin/student", locals: {page_title: "Students List"}
   end
 
   post :index do
@@ -23,8 +23,28 @@ CourseOutcomes.controllers :student, parent: :admin do
                           last_name: params[:last_name],
                           student_id: params[:student_id])
     if student.valid?
-    student.save
-    redirect "/admin/student"
+			student.save
+			redirect "admin/students"
+		end
   end
-
+	
+	get :edit do
+		student = Student.find_by_student_id(params[:student_id])
+		render "student/edit"
+	end
+	
+	post :edit do
+		student = Student.find_by_student_id(params[:student_id])
+		
+		student.first_name = params[:first_name]
+		student.last_name = params[:last_name]
+		student.student_id = params[:student_id]
+		
+		if student.valid?
+			student.save
+			redirect "admin/students"
+		end
+		
+	end
+	
 end

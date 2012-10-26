@@ -1,0 +1,14 @@
+div class="row-fluid"
+	== partial "/partials/admin/admin_nav"
+	div class="span6"
+		- form_tag "", method: "post", class: "center form-horizontal well" do
+			h2 Edit Student
+			div class="row-fluid"
+				== label_tag :first_name, class: "span4"
+				== text_field_tag :first_name, class: "span8", value: student.first_name
+			div class="row-fluid"
+				== label_tag :last_name, class: "span4"
+				== text_field_tag :last_name, class: "span8", value: student.last_name
+			div class="row-fluid"
+				== label_tag :student_id, class: "span4"
+				== text_field_tag :student_id, class: "span8", value: student.student_id

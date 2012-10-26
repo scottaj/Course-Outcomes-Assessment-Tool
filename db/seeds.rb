@@ -26,4 +26,7 @@ Course.create(course_title: "CSSE 171",
               professor: User.find_by_username("tebowt"))
 Student.create(first_name: "Will",
                last_name: "Smith",
-               student_id: "10101001")
+               student_id: "5327239")
+Student.create(first_name: "Jimmy",
+               last_name: "Johnson",
+               student_id: "2382912")
