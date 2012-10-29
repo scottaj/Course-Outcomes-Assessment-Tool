@@ -12,9 +12,9 @@ div class="row-fluid"
       - outcomes.each do |outcome|
         tr
           td
-            button onclick="move_outcome_up('#{outcome.id}');" id="#{outcome.id}-up"
+            span onclick="move_outcome_up('#{outcome.id}');" id="#{outcome.id}-up"
               i class="icon-chevron-up"
-            button onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
+            span onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
               i class="icon-chevron-down"
           td = outcome.enum
           td = outcome.outcome             

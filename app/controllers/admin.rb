@@ -9,14 +9,14 @@ CourseOutcomes.controllers :admin do
   end
 
   get :courses do
-    # This line can be a bit confusing. What it is doing is
-    # getting every unarchived course from all terms and then
-    # dividing those courses into subsets according to term
-    # year. It is then dividing each of those subsets into
-    # subsets according to term number. 
     courses = get_all_courses(false)
     
     render "admin/courses", locals: {page_title: "Course Administration", courses: courses}
   end
-  
+
+  get :program_outcomes do
+    program_outcomes = ProgramOutcome.all(order: "enum Asc")
+    
+    render "admin/program_outcomes", locals: {page_title: "Program Outcomes Administration", outcomes: program_outcomes}
+  end
 end

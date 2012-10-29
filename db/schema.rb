@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 9) do
   end
 
   create_table "program_outcomes", :force => true do |t|
+    t.string   "enum"
+    t.string   "outcome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
