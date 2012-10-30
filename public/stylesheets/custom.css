@@ -39,6 +39,11 @@ body {
     list-style-type: none;
 }
 
+.navlist li {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
 .archived-course {
     background-color: pink;
 }
