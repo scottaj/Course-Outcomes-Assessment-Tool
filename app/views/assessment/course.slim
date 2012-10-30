@@ -1,0 +1,21 @@
+div class="row-fluid"
+  div id="left" class="span4"
+  div id="center" class="span6"
+    h1 = course.course_title
+    h2 = course.course_name
+    div class="pushdown"
+    table class="table table-striped table-bordered"
+      tr
+        th Move
+        th Outcome
+        th Expectation
+      - outcomes.each do |outcome|
+        tr
+          td
+            span onclick="move_outcome_up('#{outcome.id}');" id="#{outcome.id}-up"
+              i class="icon-chevron-up"
+            span onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
+              i class="icon-chevron-down"
+          td = outcome.enum
+          td = outcome.outcome             
+  div id="right" class="span2"

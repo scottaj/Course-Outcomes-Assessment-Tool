@@ -22,6 +22,12 @@ def get_path(path_alias, attr = nil)
     "/course/detail"
   when /the course assessment page/i
     "/assessment"
+  when /the program outcome administration page/i
+    "/admin/program_outcomes"
+  when /the new program outcome page/i
+    "/admin/admin/program_outcome/create"
+  when /the edit program outcome page/i
+    "/admin/admin/program_outcome/edit/"
   else
     raise "No path for string '#{path_alias}'"
   end
