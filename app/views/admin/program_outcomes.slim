@@ -4,11 +4,17 @@ div class="row-fluid"
     table class="table table-striped table-bordered"
       thead
         tr
+          th Move
           th colspan="2" Outcome
           th Edit/Delete
       tbody id="outcomes"
         - outcomes.each do |outcome|
           tr
+            td
+              a href="#{current_path}/#{outcome.enum}/up" id="#{outcome.enum}-promote"
+                i class="icon-chevron-up"
+              a href="#{current_path}/#{outcome.enum}/down" id="#{outcome.enum}-demote"
+                i class="icon-chevron-down"
             td #{outcome.enum}.
             td = outcome.outcome
             td
