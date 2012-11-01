@@ -1,0 +1,10 @@
+div class="row-fluid"
+  == partial "/partials/admin/admin_nav"
+  div class="span6"
+    - form_tag "", method: "post", class: "center form-horizontal well" do
+      h2 Edit Program Outcome
+      div class="row-fluid"
+        == label_tag :outcome, class: "span4"
+        == text_field_tag :outcome, id: :outcome, value: outcome.outcome, required: true
+      div class="row-fluid"
+        == submit_tag "Save", class: "btn btn-xlarge btn-primary"

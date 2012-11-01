@@ -31,19 +31,23 @@ describe "Outcome Model" do
       end
 
       it "can be the same if two outcomes have different course id's" do
-        o = Outcome.create(enum: "a",                     
+        o = Outcome.create(enum: 1,                     
                            course: @c)
-        o2 = Outcome.new(enum: "a",
-                         course_id: 999)
-
+        o2 = Outcome.new(enum: 1,
+                         course: Course.create(course_name: "Roundhouse Kicking",
+                      course_title: "AK 101",
+                      term_number: 2,
+                      term_year: 2012,
+                      professor: User.find_by_username("norrisc")))
+        
         o2.should be_valid
       end
 
-      it "should be an auto-generated incrementing string if not manually specified" do
+      it "should be an auto-generated incrementing integerthat starts at 1 if not manually specified" do
         x = []
         3.times {x << Outcome.create(course: @c)}
 
-        x.map {|i| i.enum}.should =~ ["a", "b", "c"]
+        x.map {|i| i.enum}.should =~ [1, 2, 3]
       end
     end
   end

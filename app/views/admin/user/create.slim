@@ -4,7 +4,7 @@ div class="row-fluid"
     - form_tag "", method: "post", class: "center form-horizontal well" do
       h2 New User
       - errors.each do |e|
-      p class="form-error" = e
+        p class="form-error" = e
       div class="row-fluid"
         == label_tag :username, class: "span4"
         == text_field_tag :username, id: :username, required: true, class: "span8"

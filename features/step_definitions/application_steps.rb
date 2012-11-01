@@ -59,6 +59,16 @@ Given /^the following outcome exists:$/ do |table|
   outcome.save
 end
 
+Given /^the following program outcome exists:$/ do |table|
+  program_outcome_attr = table.rows_hash
+  program_outcome = ProgramOutcome.new
+
+  program_outcome_attr.each {|attr, value| program_outcome.send(:"#{attr}=", value)}
+  program_outcome.should be_valid
+  program_outcome.save
+end
+
+
 When /^I select "(.*?)" for "(.*?)"$/ do |content, select|
   page.select content, from: select
 end

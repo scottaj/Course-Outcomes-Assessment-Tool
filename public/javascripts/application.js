@@ -15,7 +15,7 @@ function show_archived_courses() {
 
 function show_deactivated_users() {
   $.get('/admin/admin/user/deactivated', {}, function(data) {
-          data = "<div id=\"deactivated-users\">" + 
+          data = "<div id=\"deactivated-users\">" +
             "<div class=\"pushdown\"></div>" +
             "<h1>Deactivated Users</h1>" +
             data +
@@ -23,7 +23,7 @@ function show_deactivated_users() {
           $("#center-box").append(data);
         });
   $("#reactivate-button").attr('onclick', '').click(hide_deactivated_users);
-  $("#reactivate-button").text("Hide Deactivated");  
+  $("#reactivate-button").text("Hide Deactivated");
 };
 
 
@@ -31,13 +31,13 @@ function hide_archived_courses() {
   // Remove archived course listing.
   $("#archived-courses").toggle();
   // Change button text and bind it to new function
- text = $("#archive-button").text() === "Show Archived" ? "Hide Archived" : "Show Archived"
+ var text = $("#archive-button").text() === "Show Archived" ? "Hide Archived" : "Show Archived";
   $("#archive-button").text(text);
 };
 
 function hide_deactivated_users() {
   $("#deactivated-users").toggle();
   //$("#reactivate-button").click(show_deactivated_users);
-  text = $("#reactivate-button").text() === "Show Deactivated" ? "Hide Deactivated" : "Show Deactivated"
+  var text = $("#reactivate-button").text() === "Show Deactivated" ? "Hide Deactivated" : "Show Deactivated";
   $("#reactivate-button").text(text);
 };
