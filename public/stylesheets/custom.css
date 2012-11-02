@@ -37,6 +37,7 @@ body {
 
 .navlist {
     list-style-type: none;
+    margin-left: 0px;
 }
 
 .navlist li {
