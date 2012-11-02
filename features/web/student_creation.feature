@@ -20,7 +20,7 @@ Feature: Student Creation
     And I should see "Edit"
     And I should see "New Student"
     
-  Scenario: Chuck trying to change a student's T-Number (invalid T-Number)
+  Scenario:  Trying to change a student's T-Number (T-Number too short)
     Given the following user exists:
     | username   | manningp |
     | first_name | Peyton   |
@@ -70,8 +70,8 @@ Feature: Student Creation
     And I should see "Louis"
     And I should see "T01771459"
     
-    
-  Scenario: Chuck trying to change a student's T-Number (invalid T-Number)
+  
+  Scenario: Trying to change a student's T-Number (same T-Number)
     Given the following user exists:
     | username   | manningp |
     | first_name | Peyton   |
@@ -95,7 +95,7 @@ Feature: Student Creation
     And I should see "First name"
     And I should see "Last name"
     And I should see "Student"
-    When I fill in "student_id" with "T03459812"
+    When I fill in "student_id" with "T08765432"
     And I click "Save"
     Then I should be on "the edit students page"
     And I should see "T-Number must be unique!"
