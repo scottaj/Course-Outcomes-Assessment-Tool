@@ -14,6 +14,16 @@ Given /^the following user exists:$/ do |table|
   user.save
 end
 
+Given /^the following student exists:$/ do |table|
+  student_attr = table.rows_hash
+  student = Student.new
+  
+  student_attr.each {|attr, value| student[attr] = value}
+  
+  student.should be_valid
+  student.save
+end
+
 Given /^the user "(.*?)" does not exist$/ do |username|
   User.where(username: username).first.should be_nil
 end

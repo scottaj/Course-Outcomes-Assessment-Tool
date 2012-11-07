@@ -22,6 +22,12 @@ def get_path(path_alias, attr = nil)
     "/course/detail"
   when /the course assessment page/i
     "/assessment"
+  when /the students page/i
+    "/admin/students"
+  when /the edit students page/i
+    "/student/edit"
+  when /the student creation page/i
+    "/student/create"
   when /the program outcome administration page/i
     "/admin/program_outcomes"
   when /the new program outcome page/i
