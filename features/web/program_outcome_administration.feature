@@ -74,3 +74,36 @@ Feature: Program Outcome Adminstartion
     And I should not see the following:
     | test outcome for a program |
     | a.                         |
+
+  Scenario: Promoting and demoting existing program outcome
+    Given the following user exists:
+    | username   | staffordm |
+    | first_name | Matthew   |
+    | last_name  | Stafford  |
+    | password   | a1b2c3d4  |
+    And the following program outcome exists:
+    | outcome | test outcome for a program |
+    And the following program outcome exists:
+    | outcome | Whuddup                    |
+    And the following program outcome exists:
+    | outcome | Yoyoyo                     |
+    And I am logged in as the user "staffordm" with the password "a1b2c3d4"
+    When I click "Admin"
+    And I click "Program Outcomes"
+    Then I should see the following outcomes:
+    | enum | outcome                    |
+    | a.   | test outcome for a program |
+    | b.   | Whuddup                    |
+    | c.   | Yoyoyo                     |
+    When I click the item with attribute "#b-promote"
+    Then I should see the following outcomes:
+    | enum | outcome                    |
+    | a.   | Whuddup                    |
+    | b.   | test outcome for a program |
+    | c.   | Yoyoyo                     |
+    When I click the item with attribute "#b-demote"
+    Then I should see the following outcomes:
+    | enum | outcome                    |
+    | a.   | Whuddup                    |
+    | b.   | Yoyoyo                     |
+    | c.   | test outcome for a program |

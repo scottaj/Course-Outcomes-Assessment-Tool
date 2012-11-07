@@ -106,3 +106,31 @@ end
 Then /^I should see "(.*?)"$/ do |content|
   page.should have_content(content)
 end
+
+Then /^I should see the following outcomes:$/ do |table|
+  rows = table.hashes
+
+  found_enum = false
+  found_outcome = false
+  rows.each do |row|
+    all("tr").each do |tr|
+      begin
+        found_enum = true
+        tr.should have_content(row[:enum])
+      rescue
+        found_enum = false
+        found_outcome = false
+      end
+      begin
+        found_outcome = true
+        tr.should have_content(row[:outcome])
+      rescue
+        found_enum = false
+        found_outcome = false
+      end
+      break if found_enum and found_outcome
+    end
+
+    raise "Matching row not found!" unless found_enum and found_outcome
+  end
+end
