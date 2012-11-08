@@ -3,6 +3,6 @@ div class="row-fluid"
   div class="span6" id="center-box"
     == partial "partials/course/course_table", locals: {courses: courses}
     div class="row-fluid"
-      a href="/course/create" class="span3 btn btn-large btn-primary" New Course
+      a href="#{url_for(:course, :create)}" class="span3 btn btn-large btn-primary" New Course
       span class="span6"
       button id="archive-button" onclick="show_archived_courses();" class="span3 btn btn-large btn-success" Show Archived

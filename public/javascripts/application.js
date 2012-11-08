@@ -1,6 +1,6 @@
 function show_archived_courses() {
   // Get new data and add it to the bottom of the page
-  $.get('/course/archived', {}, function(data) {
+  $.get('/admin/course/archived', {}, function(data) {
           data = "<div id=\"archived-courses\">" +
             "<div class=\"pushdown\"></div>" +
             "<h1>Archived Courses</h1>" +

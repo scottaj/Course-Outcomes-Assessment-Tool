@@ -160,20 +160,14 @@ Feature: Course Administration
     | QB 240             |
     | Not Getting Sacked |
     | Term 1 2011        |
-    And I click "Show Archived"
+    | Archived Courses   |
+    When I click "Show Archived"
     Then I should see the following:
     | QB 240             |
     | Not Getting Sacked |
     | Term 1 2011        |
     | Hide Archived      |
     | Archived Courses   |
-    And I click "Hide Archived"
-    Then I should not see the following:
-    | QB 240             |
-    | Not Getting Sacked |
-    | Term 1 2011        |
-    | Archived Courses   |
-    And I should see "Show Archived"
     
   @javascript
   Scenario: Unarchiving courses
@@ -200,7 +194,6 @@ Feature: Course Administration
     And I click "Courses"
     And I click "Show Archived"
     And I click the item with attribute "#qb240-1-1-2011-archive"
-    And I refresh the page
     Then I should see the following:
     | Term 1 2011        |
     | QB 240             |

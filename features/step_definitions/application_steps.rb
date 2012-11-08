@@ -68,6 +68,9 @@ Given /^the following program outcome exists:$/ do |table|
   program_outcome.save
 end
 
+When /^I wait "(.*?)" seconds$/ do |time|
+  sleep(time.to_f)
+end
 
 When /^I select "(.*?)" for "(.*?)"$/ do |content, select|
   page.select content, from: select

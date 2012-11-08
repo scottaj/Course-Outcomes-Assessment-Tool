@@ -1,43 +1,6 @@
-CourseOutcomes.controllers :course do
-  get :create do
-    errors = session[:errors] || []
-    session[:errors] = nil
-    dates = get_surrounding_years(5, 2)
-    professors = User.all.map {|u| [u.name, u.username]}
-    render "course/create", locals: {page_title: "Create Course", errors: errors, dates: dates.to_a.reverse, professors: professors}
-  end
+CourseOutcomes.controllers :course, parent: :admin do
 
-  post :create do
-    session[:errors] = nil
-    course = Course.new(course_title: params[:course_title],
-                        section: params[:section],
-                        course_name: params[:course_name],
-                        term_number: params[:term_number],
-                        term_year: params[:term_year])
-    course.professor = User.find_by_username(params[:professor])
-    
-    if course.valid?
-      course.save
-      redirect "/admin/courses"
-    else
-      session[:errors] = get_ar_errors(course)
-      redirect request.fullpath
-    end
-  end
-
-  get :archive, with: :course_id do
-    course = Course.find(params[:course_id])
-    course.archived = !course.archived
-    course.save
-    redirect "/admin/courses"
-  end
-
-  get :archived do
-    courses = get_all_courses(true)
-    return partial "/partials/course/course_table", locals: {courses: courses}
-  end
-
-  get :detail, with: :course_id do
+  get :index, map: '/admin/course', with: :course_id, priority: :low do
     errors = session[:errors] || []
     session[:errors] = nil
     course = Course.find(params[:course_id])
@@ -45,7 +8,7 @@ CourseOutcomes.controllers :course do
     render "/course/detail", locals: {page_title: course.course_title, course: course, years: years.to_a.reverse, errors: errors}
   end
 
-  post :detail, with: :course_id do
+  post :index, map: '/admin/course', with: :course_id, priority: :low do
     course = Course.find(params[:course_id])
     course.professor = User.find_by_username(params[:professor])
 
@@ -57,10 +20,49 @@ CourseOutcomes.controllers :course do
 
     if course.valid?
       course.save
-      redirect "/admin/courses"
+      redirect url_for(:admin, :courses)
     else
       session[:errors] = get_ar_errors(course)
       redirect request.fullpath
     end
+  end
+
+  get :create, map: '/admin/course/create' do
+    errors = session[:errors] || []
+    session[:errors] = nil
+    dates = get_surrounding_years(5, 2)
+    professors = User.all.map {|u| [u.name, u.username]}
+    render "course/create", locals: {page_title: "Create Course", errors: errors, dates: dates.to_a.reverse, professors: professors}
+  end
+
+  post :create, map: '/admin/course/create' do
+    session[:errors] = nil
+    course = Course.new(course_title: params[:course_title],
+                        section: params[:section],
+                        course_name: params[:course_name],
+                        term_number: params[:term_number],
+                        term_year: params[:term_year]
+                        )
+    course.professor = User.find_by_username(params[:professor])
+    
+    if course.valid?
+      course.save
+      redirect url_for(:admin, :courses)
+    else
+      session[:errors] = get_ar_errors(course)
+      redirect request.fullpath
+    end
+  end
+
+  get :archive, map: '/admin/course/archive', with: :course_id do
+    course = Course.find(params[:course_id])
+    course.archived = !course.archived
+    course.save
+    redirect url_for(:admin, :courses)
+  end
+
+  get :archived, map: '/admin/course/archived' do
+    courses = get_all_courses(true)
+    return partial "/partials/course/course_table", locals: {courses: courses}
   end
 end

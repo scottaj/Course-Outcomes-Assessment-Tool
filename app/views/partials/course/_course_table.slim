@@ -16,8 +16,8 @@
               td = course.section
               td = User.find(course.professor).name
               td
-                a href="/course/detail/#{course.id}" id="#{course.to_s}-edit"
+                a href="#{url_for(:course, :index, course_id: course.id)}" id="#{course.to_s}-edit"
                   i class="icon-pencil"
                 span &#47
-                a href="/course/archive/#{course.id}" id="#{course.to_s}-archive"
+                a href="#{url_for(:course, :archive, course_id: course.id)}" id="#{course.to_s}-archive"
                   i class="icon-#{course.archived ? 'plus' : 'minus'}-sign"

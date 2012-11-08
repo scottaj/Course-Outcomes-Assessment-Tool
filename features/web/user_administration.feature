@@ -152,7 +152,7 @@ Feature: User Administration
     Then I should be on "the add user page"
     And I should see "You must specify a username"
     
-		@javascript
+  @javascript
   Scenario: Deactivating an existing user
     Given the following user exists:
     | username   | manningp |
@@ -169,8 +169,8 @@ Feature: User Administration
     And I click "Users"
     And I click the item with attribute "#rodgersa-delete"
     Then I should be on "the user administration page"
-		When I click "Show Deactivated"
-		Then I should see "Active"
+    When I click "Show Deactivated"
+    Then I should see "Active"
     And I should see "Deactivated Users"
     And I should see "Aaron"
     And I should see "Rodgers"

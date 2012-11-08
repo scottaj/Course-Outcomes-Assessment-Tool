@@ -17,9 +17,9 @@ def get_path(path_alias, attr = nil)
   when /the course administration page/i
     "/admin/courses"
   when /the course creation page/i
-    "/course/create"
+    "/admin/course/create"
   when /the edit course page/i
-    "/course/detail"
+    "admin/course"
   when /the course assessment page/i
     "/assessment"
   when /the students page/i
