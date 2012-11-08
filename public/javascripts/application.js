@@ -14,7 +14,7 @@ function show_archived_courses() {
 };
 
 function show_deactivated_users() {
-  $.get('/admin/admin/user/deactivated', {}, function(data) {
+  $.get('/admin/user/deactivated', {}, function(data) {
           data = "<div id=\"deactivated-users\">" +
             "<div class=\"pushdown\"></div>" +
             "<h1>Deactivated Users</h1>" +

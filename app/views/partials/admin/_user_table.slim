@@ -15,8 +15,8 @@ div class="row-fluid"
           td = user.last_name
           td = user.active ? "Yes" : "No"
           td
-            a href="/admin/#{user.username}/user" id="#{user.username}-edit"
+            a href="#{url_for(:user, :index, username: user.username)}" id="#{user.username}-edit"
               i class="icon-pencil"
             span &#47
-            a href="/admin/#{user.username}/user/delete" id="#{user.username}-delete"
+            a href="#{url_for(:user, :delete, username: user.username)}" id="#{user.username}-delete"
               i class="icon-#{user.active ? 'minus' : 'plus'}-sign"

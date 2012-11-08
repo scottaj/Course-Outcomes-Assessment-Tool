@@ -1,14 +1,14 @@
 CourseOutcomes.controllers :user, parent: :admin do
 
-  get :index do
-    user = User.find_by_username(params[:admin_id])
+  get :index, map: '/admin/user', with: :username, priority: :low do
+    user = User.find_by_username(params[:username])
     errors = session[:errors] || []
     session[:errors] = nil
     render "admin/user/detail", locals: {page_title: user.name, user: user, errors: errors}
   end
 
-  post :index do
-    user = User.find_by_username(params[:admin_id])
+  post :index, map: '/admin/user', with: :username, priority: :low do
+    user = User.find_by_username(params[:username])
     user.first_name = params[:first_name]
     user.last_name = params[:last_name]
     unless params[:new_password].empty?
@@ -18,16 +18,16 @@ CourseOutcomes.controllers :user, parent: :admin do
     user.save
 
     session[:errors] = get_ar_errors(user)
-    redirect "admin/#{params[:admin_id]}/user"
+    redirect url_for(:user, :index, username: params[:username])
   end
   
-  get :create do
+  get :create, map: '/admin/user/create' do
     errors = session[:errors] || []
     session[:errors] = nil
     render "admin/user/create", locals: {page_title: "Create New User", errors: errors}
   end
 
-  post :create do
+  post :create, map: '/admin/user/create' do
     session[:errors] = nil
     user = User.new(username: params[:username],
                     first_name: params[:first_name],
@@ -37,27 +37,21 @@ CourseOutcomes.controllers :user, parent: :admin do
 
     if user.valid?
       user.save
-      redirect "/admin/user"
+      redirect url_for(:admin, :users)
     else
       session[:errors] = get_ar_errors(user)
-      redirect "/admin/admin/user/create"
+      redirect url_for(:user, :create)
     end
   end
     
-  get :delete do
-    user = User.find_by_username(params[:admin_id])
-    if user.active == false
-      user.active = true
-      user.save
-      redirect "/admin/user"
-    else
-      user.active = false
-      user.save
-      redirect "/admin/user"
-    end
+  get :delete, map: '/admin/user/delete', with: :username do
+    user = User.find_by_username(params[:username])
+    user.active = !user.active
+    user.save
+    redirect url_for(:admin, :users)
   end
     
-  get :deactivated do
+  get :deactivated, map: '/admin/user/deactivated' do
     deactivated = get_all_users(false)
     return partial "/partials/admin/user_table", locals: {users: deactivated}
   end

@@ -9,11 +9,11 @@ def get_path(path_alias, attr = nil)
   when /the admin(istration)? page/i
     "/admin"
   when /the user admin(istration)? page/i
-    "/admin/user"
+    "/admin/users"
   when /the add user page/i
-    "/admin/admin/user/create"
+    "/admin/user/create"
   when /the edit user page/i
-    "/admin/#{attr}/user"
+    "/admin/user"
   when /the course administration page/i
     "/admin/courses"
   when /the course creation page/i

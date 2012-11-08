@@ -3,7 +3,7 @@ CourseOutcomes.controllers :admin do
     render "admin/admin", locals: {page_title: "Admin"}
   end
 
-  get :user do
+  get :users do
     deactivated = get_all_users(true)
     render "admin/user/user", locals: {page_title: "User Administration", users: deactivated}
   end
