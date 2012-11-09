@@ -11,17 +11,17 @@ div class="row-fluid"
         - outcomes.each do |outcome|
           tr
             td
-              a href="#{current_path}/#{outcome.enum}/up" id="#{outcome.enum}-promote"
+              a href="#{url_for(:admin, :program, :outcomes, enum: outcome.enum, direction: 'up')}" id="#{outcome.enum}-promote"
                 i class="icon-chevron-up"
-              a href="#{current_path}/#{outcome.enum}/down" id="#{outcome.enum}-demote"
+              a href="#{url_for(:admin, :program, :outcomes, enum: outcome.enum, direction: 'down')}" id="#{outcome.enum}-demote"
                 i class="icon-chevron-down"
             td #{outcome.enum}.
             td = outcome.outcome
             td
-              a href="/admin/admin/program_outcome/edit/#{outcome.enum}" id="#{outcome.enum}-edit"
+              a href="#{url_for(:program, :outcome, :index, enum: outcome.enum)}" id="#{outcome.enum}-edit"
                 i class="icon-pencil"
               span &#47
-              a href="/admin/admin/program_outcome/delete/#{outcome.enum}" id="#{outcome.enum}-delete"
+              a href="#{url_for(:program, :outcome, :delete, enum: outcome.enum)}" id="#{outcome.enum}-delete"
                 i class="icon-trash"
     div class="row-fluid"
-      a id="new-program-outcome" href="/admin/admin/program_outcome/create" class="btn btn-primary" New Outcome
+      a href="#{url_for(:program, :outcome, :create)}" id="new-program-outcome" class="btn btn-large btn-primary" New Outcome
