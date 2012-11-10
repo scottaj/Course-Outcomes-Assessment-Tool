@@ -5,16 +5,12 @@ CourseOutcomes.helpers do
     case t_number
     when /^T[0-9]{8}$/i
       return t_number
-    when /^[0-9]{7}$/i
+    when /^[0-9]{7}$/
       return "T0#{t_number}"
-    when /^[0-9]{8}$/i
+    when /^[0-9]{8}$/
       return "T#{t_number}"
     else
-    return t_number
+      return t_number
+    end
   end
-    
-  end
-  # def simple_helper_method
-  #  ...
-  # end
 end

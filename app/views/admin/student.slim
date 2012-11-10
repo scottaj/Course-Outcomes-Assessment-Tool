@@ -1,6 +1,6 @@
 div class="row-fluid"
-	== partial "/partials/admin/admin_nav"
-	div class="span6" id="center-box"
-		== partial "/partials/student/student_table"
-		div class="row-fluid"
-			a href="/student/create" class="span3 btn btn-large btn-primary" New Student
+  == partial "/partials/admin/admin_nav"
+  div class="span6" id="center-box"
+    == partial "/partials/student/student_table"
+    div class="row-fluid"
+      a href="#{url_for(:student, :create)}" class="span3 btn btn-large btn-primary" New Student

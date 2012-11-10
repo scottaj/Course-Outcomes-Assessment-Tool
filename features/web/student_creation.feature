@@ -19,7 +19,8 @@ Feature: Student Creation
     And I should see "T-Number"
     And I should see "Edit"
     And I should see "New Student"
-    
+
+  @javascript  
   Scenario:  Trying to change a student's T-Number (T-Number too short)
     Given the following user exists:
     | username   | manningp |
@@ -34,12 +35,8 @@ Feature: Student Creation
     When I click "Admin"
     And I click "Students"
     Then I should be on "the students page"
-    And I click the item with attribute "#student-edit"
+    And I click the item with attribute "#T08765432-edit"
     Then I should be on "the edit students page"
-    And I should see "Edit Student"
-    And I should see "First name"
-    And I should see "Last name"
-    And I should see "Student"
     When I fill in "student_id" with "989"
     And I click "Save"
     Then I should be on "the edit students page"
@@ -89,12 +86,8 @@ Feature: Student Creation
     When I click "Admin"
     And I click "Students"
     Then I should be on "the students page"
-    And I click the item with attribute "#student-edit"
+    And I click the item with attribute "#T03459812-edit"
     Then I should be on "the edit students page"
-    And I should see "Edit Student"
-    And I should see "First name"
-    And I should see "Last name"
-    And I should see "Student"
     When I fill in "student_id" with "T08765432"
     And I click "Save"
     Then I should be on "the edit students page"

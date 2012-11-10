@@ -10,10 +10,10 @@ div class="span4 well" id="left"
         i class="icon-book icon-white"
         span class="navbtn-text" &nbspCourses
     li
-      a class="btn btn-large btn-info btn-block" href="/admin/students"
+      a class="btn btn-large btn-info btn-block" href="#{url_for(:admin, :students)}"
         i class="icon-th-large icon-white"
         span class="navbtn-text" &nbspStudents
     li
-      a  href="#{url_for(:admin, :program, :outcomes)}" class="btn btn-large btn-info btn-block"
+      a href="#{url_for(:admin, :program, :outcomes)}" class="btn btn-large btn-info btn-block"
         i class="icon-tasks icon-white"
         span class="navbtn-text" &nbspProgram Outcomes
