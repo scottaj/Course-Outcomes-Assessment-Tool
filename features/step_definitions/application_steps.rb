@@ -105,7 +105,15 @@ When /^I click the item with attribute "(.*?)"$/ do |attr|
 end
 
 When /^I log out$/ do
-	click_on "Logout"
+  click_on "Logout"
+end
+
+When /^I navigate to "(.*?)"$/ do |url|
+  visit url
+end
+
+Then /^I should not be on "(.*?)"$/ do |page|
+  current_path.should_not == get_path(page)
 end
 
 Then /^I should not see "(.*?)"$/ do |content|

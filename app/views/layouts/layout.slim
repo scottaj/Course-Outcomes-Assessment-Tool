@@ -15,9 +15,10 @@ html
             -if session[:token]
               li class="divider-vertical"
               li
-                 a href="/homepage" Home Page
-              li
-                 a href="/admin" Admin
+                a href="/homepage" Home Page
+              - if User.find(session[:token]).admin?
+                li
+                  a href="/admin" Admin
                
             
             -if session[:token]
