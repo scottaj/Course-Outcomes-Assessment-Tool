@@ -5,15 +5,17 @@ div class="row-fluid"
         th Username
         th First Name
         th Last Name
-        th Active
-        th Edit/Reactivate
+        th Admin?
+        th Edit/Activate
            
       - users.each do |user|
         tr class="#{'deactivated-user' if user.active}"
           td = user.username
           td = user.first_name
           td = user.last_name
-          td = user.active ? "Yes" : "No"
+          td
+            - if user.admin?
+              i class="icon-ok"
           td
             a href="#{url_for(:user, :index, username: user.username)}" id="#{user.username}-edit"
               i class="icon-pencil"

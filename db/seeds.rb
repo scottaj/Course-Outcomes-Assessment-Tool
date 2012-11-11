@@ -2,12 +2,15 @@ User.create(username: "tebowt",
             first_name: "Tim",
             last_name: "Tebow",
             password: "abcd1234",
-            active: true)
+            active: true,
+            role: :admin)
+
 User.create(username: "riversp", 
             first_name: "Phillip",  
             last_name: "Rivers", 
             password: "1234abcd",
-            active: true)
+            active: true,
+            role: :user)
 
 Course.create(course_title: "CSSE 171",
               course_name: "Intro Programming I",

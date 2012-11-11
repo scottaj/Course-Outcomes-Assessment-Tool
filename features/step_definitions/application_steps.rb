@@ -4,12 +4,24 @@ Given /^I am on "(.*?)"$/ do |page_name|
   visit get_path(page_name)
 end
 
-Given /^the following user exists:$/ do |table|
+Given /^the following admin user exists:$/ do |table|
   user_attr = table.rows_hash
   user = User.new
   
   user_attr.each {|attr, value| user[attr] = value}
 
+  user.role = :admin
+  user.should be_valid
+  user.save
+end
+
+Given /^the following normal user exists:$/ do |table|
+  user_attr = table.rows_hash
+  user = User.new
+  
+  user_attr.each {|attr, value| user[attr] = value}
+
+  user.role = :user
   user.should be_valid
   user.save
 end
@@ -119,6 +131,11 @@ end
 Then /^I should see "(.*?)"$/ do |content|
   page.should have_content(content)
 end
+
+Then /^user "(.*?)" should not be an admin$/ do |username|
+  User.find_by_username(username).should_not be_admin
+end
+
 
 Then /^I should see the following outcomes:$/ do |table|
   rows = table.hashes

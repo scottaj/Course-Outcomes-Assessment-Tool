@@ -11,9 +11,10 @@ CourseOutcomes.controllers :user, parent: :admin do
     user = User.find_by_username(params[:username])
     user.first_name = params[:first_name]
     user.last_name = params[:last_name]
+    user.role = (params[:admin] == "Yes" ? :admin : :user)
     unless params[:new_password].empty?
-    user.password = params[:new_password]
-    user.password_confirmation = params[:password_confirmation]
+      user.password = params[:new_password]
+      user.password_confirmation = params[:password_confirmation]
     end
     user.save
 
@@ -34,6 +35,8 @@ CourseOutcomes.controllers :user, parent: :admin do
                     last_name: params[:last_name],
                     password: params[:password],
                     password_confirmation: params[:password_confirmation])
+
+    user.role = (params[:admin] == "Yes" ? :admin : :user)
 
     if user.valid?
       user.save

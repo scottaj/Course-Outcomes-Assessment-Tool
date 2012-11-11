@@ -3,9 +3,10 @@ require 'spec_helper'
 describe "Outcome Model" do
   before do
     @p = User.create(username: "norrisc",
-                    first_name: "Chuck",
-                    last_name: "Norris",
-                    password: "abcd1234")
+                     first_name: "Chuck",
+                     last_name: "Norris",
+                     password: "abcd1234",
+                     role: :user)
     @c = Course.create(course_name: "Roundhouse Kicking",
                       course_title: "AK 101",
                       term_number: 1,

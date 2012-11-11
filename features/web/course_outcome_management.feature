@@ -4,7 +4,7 @@ Feature: Outcome Administration
   I need to be able to be able to create, edit, organize, and delete outcomes for my courses
   
   Scenario: Viewing existing outcomes for a course
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |

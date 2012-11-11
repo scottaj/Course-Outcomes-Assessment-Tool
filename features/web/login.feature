@@ -14,7 +14,7 @@ Feature: Login
 
   Scenario: Logging in with correct credentials
     Given I am on "the login page"
-    And the following user exists:
+    And the following admin user exists:
     | username   | tebowt   |
     | first_name | Tim      |
     | last_name  | Tebow    |

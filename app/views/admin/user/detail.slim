@@ -12,6 +12,9 @@ div class="row-fluid"
         == label_tag :last_name, class: "span4"
         == text_field_tag :last_name, class: "span8", value: user.last_name
       div class="row-fluid"
+        == label_tag "administrator", name: :admin, class: "span4"
+        == select_tag :admin, id: :admin, options: ["Yes", "No"], class: "span4", selected: (user.admin? ? "Yes" : "No")
+      div class="row-fluid"
         == label_tag :new_password, class: "span4"
         == password_field_tag :new_password, class: "span8"
       div class="row-fluid"

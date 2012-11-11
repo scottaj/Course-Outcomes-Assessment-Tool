@@ -5,7 +5,7 @@ Feature: Student Creation
   
   
   Scenario: Viewing current students
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | manningp |
     | first_name | Peyton   |
     | last_name  | Manning  |
@@ -22,7 +22,7 @@ Feature: Student Creation
 
   @javascript  
   Scenario:  Trying to change a student's T-Number (T-Number too short)
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | manningp |
     | first_name | Peyton   |
     | last_name  | Manning  |
@@ -43,7 +43,7 @@ Feature: Student Creation
     And I should see "T-Number format must be T########"
     
   Scenario: Creation of a new student
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | manningp |
     | first_name | Peyton   |
     | last_name  | Manning  |
@@ -69,7 +69,7 @@ Feature: Student Creation
     
   
   Scenario: Trying to change a student's T-Number (same T-Number)
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | manningp |
     | first_name | Peyton   |
     | last_name  | Manning  |

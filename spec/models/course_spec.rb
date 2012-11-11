@@ -11,7 +11,8 @@ describe "Course Model" do
       User.create(username: "norrisc",
                   first_name: "Chuck",
                   last_name: "Norris",
-                  password: "9876zyxw")
+                  password: "9876zyxw",
+                  role: :user)
       course = Course.create(course_title: "MMA 101",
                              course_name: "Roundhouse Kicking",
                              term_number: 1,
@@ -31,7 +32,8 @@ describe "Course Model" do
         User.create(username: "willisb",
                     first_name: "Bruce",
                     last_name: "Willis",
-                    password: "abcd1234")
+                    password: "abcd1234",
+                    role: :user)
         @course = Course.new(course_title: "AK 470",
                              course_name: "Advanced Balding",
                              term_number: 1,
@@ -74,7 +76,8 @@ describe "Course Model" do
         User.create(username: "schwarza",
                     first_name: "Arnold",
                     last_name: "Schwarzenegger",
-                    password: "qwer9876")
+                    password: "qwer9876",
+                    role: :user)
         Course.create(course_title: "ACT 101",
                       course_name: "Lame One-liners",
                       term_number: 1,

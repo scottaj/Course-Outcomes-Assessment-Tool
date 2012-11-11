@@ -4,7 +4,7 @@ Feature: Program Outcome Adminstartion
   I must be able to create, modify, and delete outcomes for my program.
 
   Scenario: Viewing existing program outcomes
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -20,7 +20,7 @@ Feature: Program Outcome Adminstartion
     | test outcome for a program |
 
   Scenario: Creating a new program outcome
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -40,7 +40,7 @@ Feature: Program Outcome Adminstartion
     | b.           |
 
   Scenario: Editing an existing program outcome
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -59,7 +59,7 @@ Feature: Program Outcome Adminstartion
     And I should see "Being a BAMF"
 
   Scenario: Deleting an existing program outcome
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -76,7 +76,7 @@ Feature: Program Outcome Adminstartion
     | a.                         |
 
   Scenario: Promoting and demoting existing program outcome
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |

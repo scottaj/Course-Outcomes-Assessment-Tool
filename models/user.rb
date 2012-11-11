@@ -1,23 +1,35 @@
 class User < ActiveRecord::Base
-
+  ROLES = {user: 1, admin: 2}
+  
+  # Make a ".role?" method for each role defined.
+  ROLES.each_key do |role| 
+    define_method("#{role.to_s}?") do
+      return self.role == role
+    end
+  end
+  
   has_many :courses, dependent: :nullify, inverse_of: :professor
   
   attr_accessor :password_confirmation
-
-  before_save do
-    self.password = BCrypt::Password.create(self.password)
-  end
   
   before_create do
-    self.active = true
+    write_attribute(:active, true) unless read_attribute(:active)
+    write_attribute(:role, 1) unless read_attribute(:role)
   end
 
+  before_save do
+    write_attribute(:password, BCrypt::Password.create(read_attribute(:password)))
+  end
+  
   validates_presence_of :username, message: "You must specify a username"
+  validates_uniqueness_of :username, message: "A user with this username already exists"
+  
   validates_length_of :password, minimum: 8, message: "Password must be at least 8 characters"
   validates_format_of :password, with: /^.*[a-z]+.*$/i, message: "Password must contain one or more letters"
-  validates_format_of :password, with: /^.*[0-9\-_\(\)!@#\$%\^&\*\+=~\?`]+.*$/, message: "Password must contain one or more numbers or symbols"
-  validates_uniqueness_of :username, message: "A user with this username already exists"
+  validates_format_of :password, with: /^.*[\d\W]+.*$/, message: "Password must contain one or more numbers or symbols"
   validates_confirmation_of :password, message: "Entered password does not match"
+
+  validates_inclusion_of :role, within: ROLES.keys, message: "Undefined role selected"
   
   def self.authenticate(username, password)
     user = self.find_by_username_and_active(username, true)
@@ -30,5 +42,13 @@ class User < ActiveRecord::Base
   
   def name()
     return "#{self.first_name} #{self.last_name}"
-  end	
+  end
+
+  def role()
+    ROLES.key(read_attribute(:role))
+  end
+
+  def role=(role)
+    write_attribute(:role, ROLES[role.to_sym])
+  end
 end

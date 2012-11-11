@@ -4,7 +4,7 @@ Feature: Course Administration
   I need to be able to create, modify, and archive courses
 
   Scenario: Viewing existing courses
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -32,7 +32,7 @@ Feature: Course Administration
     | Matthew Stafford |
     
   Scenario: Creating courses
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -58,7 +58,7 @@ Feature: Course Administration
     | Matthew Stafford   |
 
   Scenario: Trying to create a course with missing fields (course title)
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -77,7 +77,7 @@ Feature: Course Administration
     And I should see "Please enter all required fields"
 
   Scenario: Trying to create a course with missing fields (course name)
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -96,7 +96,7 @@ Feature: Course Administration
     And I should see "Please enter all required fields"
 
   Scenario: Trying to create a course with missing fields (term_number)
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -115,7 +115,7 @@ Feature: Course Administration
     And I should see "Please enter all required fields"
 
   Scenario: Archiving courses
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -135,7 +135,7 @@ Feature: Course Administration
 
   @javascript  
   Scenario: Viewing and hiding archived courses
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -171,7 +171,7 @@ Feature: Course Administration
     
   @javascript
   Scenario: Unarchiving courses
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
@@ -200,12 +200,12 @@ Feature: Course Administration
     | Not Getting Sacked |
 
   Scenario: Editing a course
-    Given the following user exists:
+    Given the following admin user exists:
     | username   | staffordm |
     | first_name | Matthew   |
     | last_name  | Stafford  |
     | password   | a1b2c3d4  |
-    And the following user exists:
+    And the following admin user exists:
     | username   | ryanm     |
     | first_name | Matt      |
     | last_name  | Ryan      |
