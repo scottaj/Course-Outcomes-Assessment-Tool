@@ -20,11 +20,6 @@ class CourseOutcomes < Padrino::Application
   get :index do
     redirect "/homepage"
   end
-  
-  get '/logout' do
-    session.clear
-    redirect '/login'
-  end
 
   error 403 do
     ## I Don't know why, but for the render call in an error block you have to put in the file extension of the template and tell it to use the layout manually.

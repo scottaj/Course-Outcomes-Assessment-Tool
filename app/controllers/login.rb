@@ -13,4 +13,9 @@ CourseOutcomes.controllers :login do
       redirect "/login?error=true"
     end
   end
+
+  get :logout, map: "/logout" do
+    session.clear
+    redirect url_for(:login, :index)
+  end
 end
