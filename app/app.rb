@@ -10,7 +10,7 @@ class CourseOutcomes < Padrino::Application
   layout :layout
 
   before /^(?!\/(login)).*$/i do
-    redirect '/login' unless session[:token]
+    redirect url_for(:login, :index) unless session[:token]
   end
   
   before /^\/admin.*$/ do
@@ -18,7 +18,7 @@ class CourseOutcomes < Padrino::Application
   end
 
   get :index do
-    redirect "/homepage"
+    redirect url_for(:homepage, :index)
   end
 
   error 403 do

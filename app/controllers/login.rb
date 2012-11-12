@@ -8,9 +8,9 @@ CourseOutcomes.controllers :login do
 
     if token
       session[:token] = token
-      redirect "/homepage"
+      redirect url_for(:homepage, :index)
     else
-      redirect "/login?error=true"
+      redirect url_for(:login, :index, error: true)#"/login?error=true"
     end
   end
 

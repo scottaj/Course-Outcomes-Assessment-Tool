@@ -41,6 +41,6 @@ CourseOutcomes.controllers :admin do
       moving.save
       move_to.save
     end
-    redirect "admin/program_outcomes"
+    redirect url_for(:admin, :program, :outcomes)
   end
 end
