@@ -8,4 +8,10 @@ div class="container-fluid"
             li No courses available.
           - courses.each do |course|
             li
-              a href="/assessment/#{course.id}" #{course.course_title}-#{course.section}
+              a href="/assessment/#{course.id}" class="homepage-nav"
+                h4 #{course.course_title}-#{course.section}
+                span
+                  em #{course.course_name} 
+                span
+                  em Term #{course.term_number} #{course.term_year}
+                

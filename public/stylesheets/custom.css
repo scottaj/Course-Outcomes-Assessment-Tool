@@ -53,4 +53,16 @@ body {
  float: left;
 }
 
+a.homepage-nav {
+  display: block;
+  color: #333333;
+}
+
+a.homepage-nav h4{
+  text-decoration: underline;
+}
+
+a.homepage-nav span{
+  font-size: 12px;
+}
 
