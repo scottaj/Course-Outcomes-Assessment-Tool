@@ -1,13 +1,13 @@
 ﻿CourseOutcomes.controllers :student, parent: :admin do
 
-  get :index, map: '/admin/student', with: :id do
+  get :index, map: '/admin/student/edit', with: :id do
     errors = session[:errors] || []
     session[:errors] = nil
     student = Student.find(params[:id])
     render "admin/student/edit", locals: {page_title: "Edit Student", student: student, errors: errors}
   end
 
-  post :index, map: '/admin/student', with: :id do
+  post :index, map: '/admin/student/edit', with: :id do
     logger.info append_t_number(params[:id])
     student = Student.find(params[:id])
     
@@ -24,13 +24,13 @@
     end
   end
   
-  get :create, map: '/admin/student/create', priority: :high do
+  get :create, map: '/admin/student/create' do
     errors = session[:errors] || []
     session[:errors] = nil
     render "admin/student/create", locals: {page_title: "New Student", errors: errors}
   end
   
-  post :create, map: '/admin/student/create', priority: :high do
+  post :create, map: '/admin/student/create' do
     student = Student.new(first_name: params[:first_name],
                           last_name: params[:last_name],
                           student_id: append_t_number(params[:student_id]))
