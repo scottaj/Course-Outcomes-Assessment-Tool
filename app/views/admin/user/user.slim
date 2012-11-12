@@ -3,6 +3,6 @@ div class="row-fluid"
   div class="span6" id="center-box"
     == partial "/partials/admin/user_table", locals: {users: users}
     div class="row-fluid"
-      a href="#{url_for(:user, :create)}" class="span3 btn btn-large btn-primary" Add User
+      a href="#{url_for(:user, :create)}" class="span3 btn btn-primary" Add User
       span class="span4"
-      button id="reactivate-button" onclick="show_deactivated_users();" class="btn btn-large btn-success" Show Deactivated
+      button id="reactivate-button" onclick="show_deactivated_users();" class="btn btn-success" Show Deactivated
