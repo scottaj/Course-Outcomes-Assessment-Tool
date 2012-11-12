@@ -5,7 +5,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     session[:errors] = nil
     course = Course.find(params[:course_id])
     years = get_surrounding_years(5, 2)
-    render "/course/detail", locals: {page_title: course.course_title, course: course, years: years.to_a.reverse, errors: errors}
+    render "admin/course/detail", locals: {page_title: course.course_title, course: course, years: years.to_a.reverse, errors: errors}
   end
 
   post :index, map: '/admin/course', with: :course_id do
@@ -32,7 +32,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     session[:errors] = nil
     dates = get_surrounding_years(5, 2)
     professors = User.all.map {|u| [u.name, u.username]}
-    render "course/create", locals: {page_title: "Create Course", errors: errors, dates: dates.to_a.reverse, professors: professors}
+    render "admin/course/create", locals: {page_title: "Create Course", errors: errors, dates: dates.to_a.reverse, professors: professors}
   end
 
   post :create, map: '/admin/course/create', priority: :high do
@@ -63,6 +63,6 @@ CourseOutcomes.controllers :course, parent: :admin do
 
   get :archived, map: '/admin/course/archived', priority: :high do
     courses = get_all_courses(true)
-    return partial "/partials/course/course_table", locals: {courses: courses}
+    return partial "/partials/admin/course/course_table", locals: {courses: courses}
   end
 end
