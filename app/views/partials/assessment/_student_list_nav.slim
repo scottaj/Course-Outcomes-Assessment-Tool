@@ -1,0 +1,14 @@
+div class="span10"    
+  table class="table table-striped table-bordered"
+    tr
+    th First Name
+    th Last Name
+    th T-Number
+    th Edit
+    th Course
+    
+    -course.students.each do |student|
+      tr
+        td = student.first_name
+        td = student.last_name
+        td = student.student_id

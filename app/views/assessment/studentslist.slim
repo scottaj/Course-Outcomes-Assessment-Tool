@@ -1,0 +1,6 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div class="span8" id="center-box"
+    == partial "/partials/assessment/student_list_nav", locals: {course: course}
+    div class="row-fluid"
+			a href="/assessment/assign" class="span3 btn btn-large btn-primary" Assign Student
