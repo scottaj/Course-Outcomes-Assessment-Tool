@@ -4,7 +4,7 @@
     errors = session[:errors] || []
     session[:errors] = nil
     student = Student.find(params[:id])
-    render "student/edit", locals: {page_title: "Edit Student", student: student, errors: errors}
+    render "admin/student/edit", locals: {page_title: "Edit Student", student: student, errors: errors}
   end
 
   post :index, map: '/admin/student', with: :id do
@@ -27,7 +27,7 @@
   get :create, map: '/admin/student/create', priority: :high do
     errors = session[:errors] || []
     session[:errors] = nil
-    render "student/create", locals: {page_title: "New Student", errors: errors}
+    render "admin/student/create", locals: {page_title: "New Student", errors: errors}
   end
   
   post :create, map: '/admin/student/create', priority: :high do
