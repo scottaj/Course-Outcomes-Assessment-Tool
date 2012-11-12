@@ -1,13 +1,13 @@
 CourseOutcomes.controllers :user, parent: :admin do
 
-  get :index, map: '/admin/user', with: :username, priority: :low do
+  get :index, map: '/admin/user/edit', with: :username do
     user = User.find_by_username(params[:username])
     errors = session[:errors] || []
     session[:errors] = nil
     render "admin/user/detail", locals: {page_title: user.name, user: user, errors: errors}
   end
 
-  post :index, map: '/admin/user', with: :username, priority: :low do
+  post :index, map: '/admin/user/edit', with: :username do
     user = User.find_by_username(params[:username])
     user.first_name = params[:first_name]
     user.last_name = params[:last_name]
@@ -47,11 +47,17 @@ CourseOutcomes.controllers :user, parent: :admin do
     end
   end
     
-  get :delete, map: '/admin/user/delete', with: :username do
+  get :activate, map: '/admin/user/activate', with: :username do
     user = User.find_by_username(params[:username])
     user.active = !user.active
     user.save
-    redirect url_for(:admin, :users)
+
+    if user.active
+      session[:errors] = ["Please reset #{user.name}'s password to complete reactivation!"]
+      redirect url_for(:user, :index, username: user.username)
+    else
+      redirect url_for(:admin, :users)
+    end
   end
     
   get :deactivated, map: '/admin/user/deactivated' do

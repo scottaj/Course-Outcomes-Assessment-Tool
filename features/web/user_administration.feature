@@ -230,8 +230,10 @@ Feature: User Administration
     And I should see "Add User"
     When I click "Show Deactivated"
     And I click the item with attribute "#rodgersa-delete"
-    Then I should be on "the user administration page" with attribute "rodgersa"
-    When I log out
+    And I fill in "new_password" with "wxyz9876"
+    And I fill in "password_confirmation" with "wxyz9876"
+    And I click "Save"
+    And I log out
     And I am logged in as the user "rodgersa" with the password "wxyz9876"
     Then I should be on "the homepage"
     
