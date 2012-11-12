@@ -1,6 +1,6 @@
 CourseOutcomes.controllers :course, parent: :admin do
 
-  get :index, map: '/admin/course', with: :course_id do
+  get :index, map: '/admin/course/edit', with: :course_id do
     errors = session[:errors] || []
     session[:errors] = nil
     course = Course.find(params[:course_id])
@@ -8,7 +8,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     render "admin/course/detail", locals: {page_title: course.course_title, course: course, years: years.to_a.reverse, errors: errors}
   end
 
-  post :index, map: '/admin/course', with: :course_id do
+  post :index, map: '/admin/course/edit', with: :course_id do
     course = Course.find(params[:course_id])
     course.professor = User.find_by_username(params[:professor])
 
@@ -27,7 +27,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     end
   end
 
-  get :create, map: '/admin/course/create', priority: :high do
+  get :create, map: '/admin/course/create' do
     errors = session[:errors] || []
     session[:errors] = nil
     dates = get_surrounding_years(5, 2)
@@ -35,7 +35,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     render "admin/course/create", locals: {page_title: "Create Course", errors: errors, dates: dates.to_a.reverse, professors: professors}
   end
 
-  post :create, map: '/admin/course/create', priority: :high do
+  post :create, map: '/admin/course/create' do
     session[:errors] = nil
     course = Course.new(course_title: params[:course_title],
                         section: params[:section],
@@ -61,7 +61,7 @@ CourseOutcomes.controllers :course, parent: :admin do
     redirect url_for(:admin, :courses)
   end
 
-  get :archived, map: '/admin/course/archived', priority: :high do
+  get :archived, map: '/admin/course/archived' do
     courses = get_all_courses(true)
     return partial "/partials/admin/course/course_table", locals: {courses: courses}
   end
