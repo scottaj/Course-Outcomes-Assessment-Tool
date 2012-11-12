@@ -1,12 +1,12 @@
 CourseOutcomes.controllers :program_outcome, parent: :admin do
 
-  get :index, map: '/admin/program_outcome', with: :enum, priority: :low do
+  get :index, map: '/admin/program_outcome/edit', with: :enum do
     outcome = ProgramOutcome.find_by_enum(params[:enum])
 
     render "admin/program_outcome/edit", locals: {page_title: "Edit Outcome #{outcome.enum}", outcome: outcome}
   end
 
-  post :index, map: '/admin/program_outcome', with: :enum, priority: :low do
+  post :index, map: '/admin/program_outcome/edit', with: :enum do
     outcome = ProgramOutcome.find_by_enum(params[:enum])
     outcome.outcome = params[:outcome]
 
