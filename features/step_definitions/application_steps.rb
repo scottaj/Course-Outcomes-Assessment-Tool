@@ -80,6 +80,29 @@ Given /^the following program outcome exists:$/ do |table|
   program_outcome.save
 end
 
+Given /^I am logged in as a normal user$/ do
+  u = User.create(username: "reynoldsb", password: "abcd1234", role: :user)
+  visit "/login"
+  fill_in "username", with: u.username
+  fill_in "password", with: "abcd1234"
+  click_on "Log In"
+end
+
+Given /^I am logged in as an admin user$/ do
+  u = User.create(username: "mcqueens", password: "abcd1234", role: :admin)
+  visit "/login"
+  fill_in "username", with: u.username
+  fill_in "password", with: "abcd1234"
+  click_on "Log In"
+end
+
+When /^I visit the assessment for the following course:$/ do |table|
+  course_params = table.rows_hash
+
+  id = Course.where(course_params).first.id
+  visit "/assessment/#{id}"
+end
+
 When /^I wait "(.*?)" seconds$/ do |time|
   sleep(time.to_f)
 end
