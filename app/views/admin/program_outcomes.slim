@@ -12,16 +12,16 @@ div class="row-fluid"
           tr
             td
               a href="#{url_for(:admin, :program, :outcomes, enum: outcome.enum, direction: 'up')}" id="#{outcome.enum}-promote"
-                i class="icon-chevron-up"
+                i class="icon-chevron-up icon-white"
               a href="#{url_for(:admin, :program, :outcomes, enum: outcome.enum, direction: 'down')}" id="#{outcome.enum}-demote"
-                i class="icon-chevron-down"
+                i class="icon-chevron-down icon-white"
             td #{outcome.enum}.
             td = outcome.outcome
             td
               a href="#{url_for(:program, :outcome, :index, enum: outcome.enum)}" id="#{outcome.enum}-edit"
-                i class="icon-pencil"
+                i class="icon-pencil icon-white"
               span &#47
               a href="#{url_for(:program, :outcome, :delete, enum: outcome.enum)}" id="#{outcome.enum}-delete"
-                i class="icon-trash"
+                i class="icon-trash icon-white"
     div class="row-fluid"
       a href="#{url_for(:program, :outcome, :create)}" id="new-program-outcome" class="btn btn-primary" New Outcome

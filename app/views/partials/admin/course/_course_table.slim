@@ -17,7 +17,7 @@
               td = User.find(course.professor).name
               td
                 a href="#{url_for(:course, :index, course_id: course.id)}" id="#{course.to_s}-edit"
-                  i class="icon-pencil"
+                  i class="icon-pencil icon-white"
                 span &#47
                 a href="#{url_for(:course, :archive, course_id: course.id)}" id="#{course.to_s}-archive"
-                  i class="icon-#{course.archived ? 'plus' : 'minus'}-sign"
+                  i class="icon-#{course.archived ? 'plus' : 'minus'}-sign icon-white"
