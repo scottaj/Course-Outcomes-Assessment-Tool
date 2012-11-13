@@ -17,7 +17,7 @@ body {
 
 .form-error {
     color: black;
-    background-color: pink;
+    background-color: red;
     font-weight: bold;
     font-size: larger;
 }
