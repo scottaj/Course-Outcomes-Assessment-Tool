@@ -46,7 +46,7 @@ body {
 }
 
 .archived-course {
-    background-color: pink;
+    background-color: red;
 }
 
 .btn-success {
@@ -68,5 +68,9 @@ a.homepage-nav span{
 
 h1, h2, h3, h4, h5, h6, .navbar .brand{
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.deactivated-user{
+  background-color: red;
 }
 

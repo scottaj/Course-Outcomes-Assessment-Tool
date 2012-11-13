@@ -9,7 +9,7 @@ div class="row-fluid"
         th Edit/Activate
            
       - users.each do |user|
-        tr class="#{'deactivated-user' if user.active}"
+        tr class="#{'deactivated-user' unless user.active}"
           td = user.username
           td = user.first_name
           td = user.last_name
