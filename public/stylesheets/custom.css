@@ -75,3 +75,6 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: red;
 }
 
+#right .btn {
+    margin-bottom: 1px;
+}

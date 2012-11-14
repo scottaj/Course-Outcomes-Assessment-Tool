@@ -2,5 +2,7 @@ div class="row-fluid"
   == partial "/partials/admin/admin_nav"
   div class="span6" id="center-box"
     == partial "/partials/admin/student/student_table"
+  div id="right" class="span2"
     div class="row-fluid"
-      a href="#{url_for(:student, :create)}" class="span3 btn btn-primary" New Student
+      span class="span1"
+      a href="#{url_for(:student, :create)}" class="span10 btn btn-success" New Student
