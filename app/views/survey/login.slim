@@ -1,0 +1,11 @@
+div class="row-fluid pushdown"
+div class="row-fluid"
+  h2 class="center" Log In
+  - form_tag "", method: "post", class: "center form-horizontal well" do
+    - if error
+      p class="form-error" Student ID not Found
+    div class="control-group"
+      == label_tag "Student ID", name: :student_id, class: "control-label"
+      div class="controls"
+        == password_field_tag :student_id, id: :student_id, required: true, pattern: "^[tT]0\\d{7}$"
+    == submit_tag "Log In", class: "btn btn-primary"

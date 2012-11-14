@@ -9,7 +9,7 @@ class CourseOutcomes < Padrino::Application
   enable :sessions
   layout :layout
 
-  before /^(?!\/(login)).*$/i do
+  before /^(?!\/(login|survey)).*$/i do
     redirect url_for(:login, :index) unless session[:token]
   end
   
