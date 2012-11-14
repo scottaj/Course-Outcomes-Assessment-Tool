@@ -1,6 +1,10 @@
 CourseOutcomes.controllers :survey do
   layout :survey_layout
 
+  before :login do
+    redirect url_for(:survey, :index) if session[:student_token]
+  end
+  
   get :login, map: "/survey/login" do
     render "survey/login", locals: {page_title: "Login", error: params[:error]}
   end
