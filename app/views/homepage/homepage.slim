@@ -8,7 +8,7 @@ div class="container-fluid"
             li No courses available.
           - courses.each do |course|
             li
-              a href="/assessment/#{course.id}" class="homepage-nav"
+              a href="#{url_for(:assessment, :index, course_id: course.id)}" class="homepage-nav"
                 h4 #{course.course_title}-#{course.section}
                 span
                   em #{course.course_name} 

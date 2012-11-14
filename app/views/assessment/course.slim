@@ -9,6 +9,7 @@ div class="row-fluid"
         th Move
         th Outcome
         th Expectation
+        th Program Outcome(s)
       - outcomes.each do |outcome|
         tr
           td
@@ -16,6 +17,7 @@ div class="row-fluid"
               i class="icon-chevron-up icon-white"
             span onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
               i class="icon-chevron-down icon-white"
-          td = outcome.enum
-          td = outcome.outcome             
+          td #{outcome.enum}.
+          td = outcome.outcome
+          td = outcome.program_outcomes.map {|o| o.enum}.join(", ").chomp(",")
   div id="right" class="span2"

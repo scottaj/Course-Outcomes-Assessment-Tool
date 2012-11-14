@@ -72,6 +72,8 @@ Given /^the following outcome exists:$/ do |table|
 
   outcome_attr["course"] = Course.find_by_course_title(outcome_attr["course"])
 
+  outcome_attr["program_outcomes"] = outcome_attr["program_outcomes"].split(',').map {|outcome| ProgramOutcome.find_by_outcome(outcome)}
+
   outcome_attr.each {|attr, value| outcome.send(:"#{attr}=", value)}
   outcome.should be_valid
   outcome.save

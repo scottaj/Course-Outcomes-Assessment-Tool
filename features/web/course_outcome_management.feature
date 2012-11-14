@@ -15,9 +15,12 @@ Feature: Outcome Administration
     | term_number  |         1 |
     | term_year    |      2012 |
     | professor    | staffordm |
+    And the following program outcome exists:
+    | outcome | program outcome |
     And the following outcome exists:
-    | outcome | test outcome |
-    | course  | QB 101       |
+    | outcome          | test outcome    |
+    | course           | QB 101          |
+    | program_outcomes | program outcome |
     And I am logged in as the user "staffordm" with the password "a1b2c3d4"
     When I click "QB 101-1"
     Then I should be on "the course assessment page"
@@ -26,6 +29,7 @@ Feature: Outcome Administration
     | test outcome |
     | a            |
     | Throwing     |
+    | 1.           |
     
   Scenario: Adding a new outcome to a course
     
