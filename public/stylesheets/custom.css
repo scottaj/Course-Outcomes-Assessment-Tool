@@ -58,20 +58,19 @@ a.homepage-nav {
   color: #333333;
 }
 
-a.homepage-nav h4{
+a.homepage-nav h4 {
   text-decoration: underline;
 }
 
-a.homepage-nav span{
+a.homepage-nav span {
     font-size: 12px;
     display: block;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar .brand{
+h1, h2, h3, h4, h5, h6, .navbar .brand {
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.deactivated-user{
+.deactivated-user {
   background-color: red;
 }
-

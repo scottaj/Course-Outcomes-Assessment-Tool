@@ -9,7 +9,11 @@ class CourseOutcomes < Padrino::Application
   enable :sessions
   layout :layout
 
-  before /^(?!\/(login|survey)).*$/i do
+  before "/" do
+    redirect url_for(:index)
+  end
+  
+  before /^(?!\/(login|survey|launchpad)).*$/i do
     redirect url_for(:login, :index) unless session[:token]
   end
   
@@ -17,8 +21,8 @@ class CourseOutcomes < Padrino::Application
     error 403 unless User.find(session[:token]).admin?
   end
 
-  get :index do
-    redirect url_for(:homepage, :index)
+  get :index, map: "/launchpad" do
+    render "index"
   end
 
   error 403 do
