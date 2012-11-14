@@ -10,7 +10,7 @@ CourseOutcomes.controllers :survey do
   end
 
   post :login, map: "/survey/login" do
-    student = Student.find_by_student_id(params[:student_id])
+    student = Student.find_by_student_id(append_t_number(params[:student_id]))
     if student
       session[:student_token] = student.id
       redirect url_for(:survey, :index)

@@ -36,6 +36,12 @@ Given /^the following student exists:$/ do |table|
   student.save
 end
 
+Given /^the following student does not exist:$/ do |table|
+  student_attr = table.rows_hash
+  Student.where(student_attr).first.should be_nil
+end
+
+
 Given /^the user "(.*?)" does not exist$/ do |username|
   User.where(username: username).first.should be_nil
 end

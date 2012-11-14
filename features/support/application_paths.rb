@@ -34,6 +34,8 @@ def get_path(path_alias, attr = nil)
     "/admin/program_outcome/create"
   when /the edit program outcome page/i
     "/admin/program_outcome"
+  when /the student survey login page/i
+    "/survey/login"
   when /the student survey selection page/i
     "/survey/select"
   else
