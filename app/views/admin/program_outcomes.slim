@@ -23,5 +23,8 @@ div class="row-fluid"
               span &#47
               a href="#{url_for(:program, :outcome, :delete, enum: outcome.enum)}" id="#{outcome.enum}-delete"
                 i class="icon-trash icon-white"
+
+  div id="right" class="span2"
     div class="row-fluid"
-      a href="#{url_for(:program, :outcome, :create)}" id="new-program-outcome" class="btn btn-primary" New Outcome
+      span class="span1"
+      a href="#{url_for(:program, :outcome, :create)}" id="new-program-outcome" class="btn btn-success span10" New Outcome

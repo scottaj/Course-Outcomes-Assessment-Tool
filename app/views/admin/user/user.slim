@@ -2,7 +2,10 @@ div class="row-fluid"
   == partial "/partials/admin/admin_nav"
   div class="span6" id="center-box"
     == partial "/partials/admin/user_table", locals: {users: users}
+  div id="right" class="span2"
     div class="row-fluid"
-      a href="#{url_for(:user, :create)}" class="span3 btn btn-primary" Add User
-      span class="span4"
-      button id="reactivate-button" onclick="show_deactivated_users();" class="btn btn-success span3" Show Deactivated
+      span class="span1"
+      a href="#{url_for(:user, :create)}" class="span10 btn btn-success" Add User
+    div class="row-fluid"
+      span class="span1"
+      button id="reactivate-button" onclick="show_deactivated_users();" class="btn btn-success span10" Show Deactivated

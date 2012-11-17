@@ -2,7 +2,10 @@ div class="row-fluid"
   == partial "/partials/admin/admin_nav"
   div class="span6" id="center-box"
     == partial "partials/admin/course/course_table", locals: {courses: courses}
+  div id="right" class="span2"
     div class="row-fluid"
-      a href="#{url_for(:course, :create)}" class="span3 btn btn-primary" New Course
-      span class="span6"
-      button id="archive-button" onclick="show_archived_courses();" class="span3 btn btn-success" Show Archived
+      span class="span1"
+      a href="#{url_for(:course, :create)}" class="span10 btn btn-success" New Course
+    div class="row-fluid"
+      span class="span1"
+      button id="archive-button" onclick="show_archived_courses();" class="span10 btn btn-success" Show Archived
