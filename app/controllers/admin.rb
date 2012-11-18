@@ -25,17 +25,17 @@ CourseOutcomes.controllers :admin do
   end
 
   get :program_outcomes, with: [:enum, :direction] do
+    moving = ProgramOutcome.find_by_enum(params[:enum])
     move_to = case params[:direction]
               when /up/i
-                get_previous_outcome(params[:enum])
+                get_previous_outcome(moving)
               when /down/i
-                get_next_outcome(params[:enum])
+                get_next_outcome(moving)
               else
                 nil
               end
 
     unless move_to.nil?
-      moving = ProgramOutcome.find_by_enum(params[:enum])
       moving.outcome, move_to.outcome = move_to.outcome, moving.outcome
 
       moving.save

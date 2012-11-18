@@ -1,6 +1,5 @@
 div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
-  div id="left" class="span4"
   div id="center" class="span6"
     h1 = course.course_title
     h2 = course.course_name
@@ -13,9 +12,9 @@ div class="row-fluid"
       - outcomes.each do |outcome|
         tr
           td
-            span onclick="move_outcome_up('#{outcome.id}');" id="#{outcome.id}-up"
+            a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'up')}" id="up-#{outcome.enum}"
               i class="icon-chevron-up icon-white"
-            span onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
+            a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'down')}"  id="down-#{outcome.enum}"
               i class="icon-chevron-down icon-white"
           td #{outcome.enum}.
           td = outcome.outcome
@@ -24,3 +23,5 @@ div class="row-fluid"
     div class="row-fluid"
       span class="span1"
       a href="#{url_for(:outcome, :create, assessment_id: course.id)}" class="btn btn-success span10" New Outcome
+
+
