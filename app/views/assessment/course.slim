@@ -16,6 +16,10 @@ div class="row-fluid"
               i class="icon-chevron-up icon-white"
             span onclick="move_outcome_down('#{outcome.id}');" id="#{outcome.id}-down"
               i class="icon-chevron-down icon-white"
-          td = outcome.enum
-          td = outcome.outcome             
+          td #{outcome.enum}.
+          td = outcome.outcome
+          td = outcome.program_outcomes.map {|o| o.enum}.join(", ").chomp(",")
   div id="right" class="span2"
+    div class="row-fluid"
+      span class="span1"
+      a href="#{url_for(:outcome, :create, assessment_id: course.id)}" class="btn btn-success span10" New Outcome
