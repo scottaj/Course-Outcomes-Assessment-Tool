@@ -108,7 +108,7 @@ When /^I visit the assessment for the following course:$/ do |table|
   course_params = table.rows_hash
 
   id = Course.where(course_params).first.id
-  visit "/assessment/#{id}"
+  visit "/assessment/outcomes/#{id}"
 end
 
 When /^I wait "(.*?)" seconds$/ do |time|
