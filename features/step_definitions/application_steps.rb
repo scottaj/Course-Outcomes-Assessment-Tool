@@ -36,6 +36,12 @@ Given /^the following student exists:$/ do |table|
   student.save
 end
 
+Given /^the following student does not exist:$/ do |table|
+  student_attr = table.rows_hash
+  Student.where(student_attr).first.should be_nil
+end
+
+
 Given /^the user "(.*?)" does not exist$/ do |username|
   User.where(username: username).first.should be_nil
 end
@@ -65,6 +71,8 @@ Given /^the following outcome exists:$/ do |table|
   outcome = Outcome.new
 
   outcome_attr["course"] = Course.find_by_course_title(outcome_attr["course"])
+
+  outcome_attr["program_outcomes"] = outcome_attr["program_outcomes"].split(',').map {|outcome| ProgramOutcome.find_by_outcome(outcome)}
 
   outcome_attr.each {|attr, value| outcome.send(:"#{attr}=", value)}
   outcome.should be_valid
@@ -100,7 +108,7 @@ When /^I visit the assessment for the following course:$/ do |table|
   course_params = table.rows_hash
 
   id = Course.where(course_params).first.id
-  visit "/assessment/#{id}"
+  visit "/assessment/outcomes/#{id}"
 end
 
 When /^I wait "(.*?)" seconds$/ do |time|

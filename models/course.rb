@@ -4,6 +4,8 @@ class Course < ActiveRecord::Base
   
 
   has_many :outcomes, dependent: :nullify, inverse_of: :course
+  has_many :survey_trackers, dependent: :nullify, inverse_of: :course
+  has_many :survey_questions, dependent: :nullify, inverse_of: :course
   
   validates_presence_of :course_name, :course_title, :term_number, :term_year, :professor, message: "Please enter all required fields"
 

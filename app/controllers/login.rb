@@ -1,4 +1,8 @@
 CourseOutcomes.controllers :login do
+  before :index do
+    redirect url_for(:homepage, :index) if session[:token]
+  end
+
   get :index do
     render "login/login", locals: {page_title: "Log In", error: params[:error]}
   end
