@@ -4,7 +4,7 @@ Feature: Role Based Authorization
   Some parts of the application must be only accessible to administrators
 
   Scenario: Going to protected routes as an administrator
-    Given I am logged in as an admin
+    Given I am logged in as an admin user
     Then I should see "Admin"
     When I click "Admin"
     Then I should be on "the admin page"
