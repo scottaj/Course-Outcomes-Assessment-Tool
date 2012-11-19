@@ -41,3 +41,16 @@ function hide_deactivated_users() {
   var text = $("#reactivate-button").text() === "Show Deactivated" ? "Hide Deactivated" : "Show Deactivated";
   $("#reactivate-button").text(text);
 };
+
+function select_students() 
+{
+    $.get('/assessment/studentslist/1', {}, function(t) 
+    {
+       var t = $("#center-box").bootstrapTransfer();
+       t.populate([
+                      {value:"1", content:"Apple"},
+                      {value:"2", content:"Orange"},
+                      {value:"3", content:"Grapefruit"}
+                  ]);
+    });
+};

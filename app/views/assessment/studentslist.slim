@@ -2,5 +2,7 @@ div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
   div class="span8" id="center-box"
     == partial "/partials/assessment/student_list_nav", locals: {course: course}
-    div class="row-fluid"
-			a href="/assessment/assign" class="span3 btn btn-primary" Assign Student
+    div class="span6"
+    //a href="/assessment/assign/#{course.id}" class="span3 btn btn-primary" Assign Student
+    span class="span6"
+    button id="assign-button" onclick="select_students();" class="span3 btn btn-success" Show Assigned

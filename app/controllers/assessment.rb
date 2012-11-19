@@ -25,7 +25,9 @@ CourseOutcomes.controllers :assessment do
       course: course}
   end
   
-  get :assign do
+  get :assign, with: :course_id do
+    course = Course.find(params[:course_id])
     
+    render "/assessment/assign", locals: {page_title: "Student Assignment", course: course}
   end
 end
