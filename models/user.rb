@@ -1,3 +1,15 @@
+###
+# USER MODEL
+#
+# Accessor Methods
+#   username   => String
+#   password   => String
+#   first_name => String
+#   last_name  => String
+#   active     => Boolean
+#   role       => Symbol
+#   courses    => Array of Course Model Instances
+#
 class User < ActiveRecord::Base
   ROLES = {user: 1, admin: 2}
   

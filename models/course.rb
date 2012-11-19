@@ -1,3 +1,20 @@
+###
+# COURSE MODEL
+#
+# Accessor Methods:
+#   id               => Integer primary key
+#   course_name      => String
+#   course_title     => String
+#   section          => Integer, default: 1
+#   term_number      => Integer
+#   term_year        => Integer
+#   archived         => Boolean, default: false
+#   professor        => User Model Instance
+#   students         => Array of Student Model Instances
+#   outcomes         => Array of Outcome Model Instances
+#   survey_trackers  => Array of SurveyTracker Model Instances
+#   survey_questions => Array of SurveyQuestion Model Instances
+#
 class Course < ActiveRecord::Base
   belongs_to :professor, class_name: "User", foreign_key: "user_id", inverse_of: :courses
   has_and_belongs_to_many :students, class_name: "Student"

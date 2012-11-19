@@ -1,3 +1,13 @@
+##
+# OUTCOME MODEL
+#
+# Accessor Methods:
+#   id               => Integer primary key
+#   enum             => Integer, default: 1 or max existing enum plus 1
+#   outcome          => Text
+#   course           => Course Model Instance
+#   program_outcomes => Array of ProgramOutcome Model Instances
+#
 class Outcome < ActiveRecord::Base
   belongs_to :course, class_name: "Course", foreign_key: "course_id", inverse_of: :outcomes
 

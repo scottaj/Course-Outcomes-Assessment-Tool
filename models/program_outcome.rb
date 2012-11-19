@@ -1,3 +1,12 @@
+###
+# PROGRAM OUTCOME MODEL
+#
+# Accessor Methods:
+#   id       => Integer primary key
+#   enum     => String, default "a" or the max enum plus 1
+#   outcome  => String
+#   outcomes => Array of Outcome Model Instances
+#
 class ProgramOutcome < ActiveRecord::Base
   has_and_belongs_to_many :outcomes, class_name: "Outcome"
 
