@@ -112,3 +112,28 @@ Feature: Outcome Administration
       |   1. | Drink    | b                |
       |   2. | Be merry | c                |
       |   3. | Eat      | a                |
+
+  Scenario: Deleting a course outcome
+    Given the following admin user exists:               
+      | username   | staffordm |
+      | first_name | Matthew   |
+      | last_name  | Stafford  |
+      | password   | a1b2c3d4  |
+    And the following course exists:                     
+      | course_name  | Throwing  |
+      | course_title | QB 101    |
+      | term_number  | 1         |
+      | term_year    | 2012      |
+      | professor    | staffordm |
+    And the following program outcome exists:
+    | outcome | program outcome 1 |
+    And the following outcome exists:                    
+      | outcome          | Eat               |
+      | course           | QB 101            |
+      | program_outcomes | program outcome 1 |
+    And I am logged in as the user "staffordm" with the password "a1b2c3d4"
+    When I click "QB 101-1"
+    Then I should see "Eat"
+    When I click the item with attribute "#delete-1"
+    Then I should be on "the course assessment page"
+    And I should not see "Eat"

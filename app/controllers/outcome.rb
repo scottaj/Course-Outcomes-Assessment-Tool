@@ -38,7 +38,14 @@ CourseOutcomes.controllers :outcome, parent: :assessment do
     end
     redirect url_for(:assessment, :index, course_id: params[:assessment_id])
   end
+
+  get :edit, map: "outcome/edit", with: :enum do
+
+  end
+
+  get :delete, map: "outcome/delete", with: :enum do
+    Outcome.find_by_enum(params[:enum]).destroy
+
+    redirect url_for(:assessment, :index, course_id: params[:assessment_id])
+  end
 end
-
-
-

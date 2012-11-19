@@ -4,21 +4,30 @@ div class="row-fluid"
     h1 = course.course_title
     h2 = course.course_name
     table class="table table-striped table-bordered"
-      tr
-        th Move
-        th Outcome
-        th Expectation
-        th Program Outcome(s)
-      - outcomes.each do |outcome|
+      thead
         tr
-          td
-            a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'up')}" id="up-#{outcome.enum}"
-              i class="icon-chevron-up icon-white"
-            a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'down')}"  id="down-#{outcome.enum}"
-              i class="icon-chevron-down icon-white"
-          td #{outcome.enum}.
-          td = outcome.outcome
-          td = outcome.program_outcomes.map {|o| o.enum}.join(", ").chomp(",")
+          th Move
+          th Outcome
+          th Expectation
+          th Program Outcome(s)
+          th Edit/Delete
+      tbody
+        - outcomes.each do |outcome|
+          tr
+            td
+              a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'up')}" id="up-#{outcome.enum}"
+                i class="icon-chevron-up icon-white"
+              a href="#{url_for(:outcome, :move, assessment_id: course.id, enum: outcome.enum, direction: 'down')}"  id="down-#{outcome.enum}"
+                i class="icon-chevron-down icon-white"
+            td #{outcome.enum}.
+            td = outcome.outcome
+            td = outcome.program_outcomes.map {|o| o.enum}.join(", ").chomp(",")
+            td
+              a href="#{url_for(:outcome, :edit, assessment_id: course.id, enum: outcome.enum)}" id="edit-#{outcome.enum}"
+                i class="icon-pencil icon-white"
+              span &#47
+              a href="#{url_for(:outcome, :delete, assessment_id: course.id, enum: outcome.enum)}" id="delete-#{outcome.enum}"
+                i class="icon-trash icon-white"
   div id="right" class="span2"
     div class="row-fluid"
       span class="span1"
