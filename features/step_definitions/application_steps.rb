@@ -119,6 +119,10 @@ When /^I select "(.*?)" for "(.*?)"$/ do |content, select|
   page.select content, from: select
 end
 
+When /^I deselect "(.*?)" from "(.*?)"$/ do |content, select|
+  page.unselect content, from: select 
+end
+
 When /^I refresh the page$/ do
   visit current_path
 end

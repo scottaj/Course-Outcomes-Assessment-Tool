@@ -1,8 +1,6 @@
 div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
   div id="center" class="span6"
-    h1 = course.course_title
-    h2 = course.course_name
     table class="table table-striped table-bordered"
       thead
         tr
@@ -21,7 +19,7 @@ div class="row-fluid"
                 i class="icon-chevron-down icon-white"
             td #{outcome.enum}.
             td = outcome.outcome
-            td = outcome.program_outcomes.map {|o| o.enum}.join(", ").chomp(",")
+            td = outcome.program_outcomes.sort.map {|o| o.enum}.join(", ").chomp(",")
             td
               a href="#{url_for(:outcome, :edit, assessment_id: course.id, enum: outcome.enum)}" id="edit-#{outcome.enum}"
                 i class="icon-pencil icon-white"

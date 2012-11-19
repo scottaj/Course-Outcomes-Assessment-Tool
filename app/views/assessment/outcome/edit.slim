@@ -1,0 +1,14 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - form_tag "", method: "post", class: "center form-horizontal well" do
+      h2 Edit Outcome #{outcome.enum}
+      div class="row-fluid"
+        == label_tag :outcome, class: "span4"
+        == text_field_tag :outcome, required: true, class: "span8", value: outcome.outcome
+      div class="row-fluid"
+        == label_tag :program_outcomes, class: "span4"
+        == select_tag :program_outcomes, id: :program_outcomes, multiple: true, required: true, options: program_outcomes.map {|po| ["#{po.enum}. #{po.outcome}", po.enum]}, class: "span8", selected: outcome.program_outcomes.map {|po| "#{po.enum}. #{po.outcome}"}
+      div class="row-fluid"
+        == submit_tag "Save", class: "btn btn-primary"
+

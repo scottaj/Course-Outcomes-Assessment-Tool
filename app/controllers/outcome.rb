@@ -40,9 +40,30 @@ CourseOutcomes.controllers :outcome, parent: :assessment do
   end
 
   get :edit, map: "outcome/edit", with: :enum do
-
+    outcome = Outcome.find_by_enum(params[:enum])
+    course = Course.find(params[:assessment_id])
+    program_outcomes = ProgramOutcome.all(order: "enum DESC")
+    
+    render "assessment/outcome/edit", locals: {
+      page_title: "Edit Outcome #{outcome.enum}",
+      outcome: outcome,
+      course: course,
+      program_outcomes: program_outcomes
+    }
   end
+  
+  post :edit, map: "outcome/edit", with: :enum do
+    outcome = Outcome.find_by_enum(params[:enum])
 
+    outcome.outcome = params[:outcome]
+    outcome.program_outcomes = params[:program_outcomes].map {|enum| ProgramOutcome.find_by_enum(enum)}
+
+    if outcome.valid?
+      outcome.save
+      redirect url_for(:assessment, :index, course_id: params[:assessment_id])
+    end
+  end
+  
   get :delete, map: "outcome/delete", with: :enum do
     Outcome.find_by_enum(params[:enum]).destroy
 

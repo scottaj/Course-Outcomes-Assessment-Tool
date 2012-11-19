@@ -1,5 +1,8 @@
 div class="span4 well" id="left"
   h2 class="text-center" Assessment
+  span class="text-center"
+    #{course.course_title}-#{course.section}
+    #{course.course_name}
   ul class="navlist"
     li 
       a class="btn btn-large btn-inverse btn-block" href="#{url_for(:assessment, :studentslist, course_id: course.id)}"
