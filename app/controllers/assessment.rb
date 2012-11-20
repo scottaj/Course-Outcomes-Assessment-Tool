@@ -33,10 +33,9 @@ CourseOutcomes.controllers :assessment do
   
   get :all_students, with: [:course_id, :in] do
     if params[:in] == "in"
-      students = Student.joins(:courses).where("courses.id = ?", params[:course_id])
+      students = Student.joins(:courses).where("courses.id = ?", params[:course_id].to_i)
     else
-      
-      students = Student.joins(:courses).where("courses.id != ?", params[:course_id])
+      students = Student.joins(:courses).where("courses.id != ?", params[:course_id].to_i)
     end
     json_data = students.map do |student|
       {value: student.student_id, content: "#{student.last_name}, #{student.first_name}" }
