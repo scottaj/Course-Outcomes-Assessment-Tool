@@ -35,13 +35,13 @@ CourseOutcomes.controllers :assessment do
     if params[:in] == "in"
       students = Course.find(params[:course_id]).students
     else
-      students = Student.all - Course.find(params[:course_id]).students
+      students = Student.all
     end
-    
+
     json_data = students.map do |student|
       {value: student.student_id, content: "#{student.last_name}, #{student.first_name}" }
     end
-    
+  
     json_data = JSON::dump(json_data)
     
     content_type "text/json"
