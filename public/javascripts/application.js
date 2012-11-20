@@ -42,16 +42,3 @@ function hide_deactivated_users() {
   $("#reactivate-button").text(text);
 };
 
-function select_students() 
-{
-    var loc = window.location.pathname;
-    $.get(loc, {}, function(t) 
-    {
-       var t = $("#center-box").bootstrapTransfer();
-       t.populate([
-                      {value:"1", content:"Apple"},
-                      {value:"2", content:"Orange"},
-                      {value:"3", content:"Grapefruit"}
-                  ]);
-    });
-};
