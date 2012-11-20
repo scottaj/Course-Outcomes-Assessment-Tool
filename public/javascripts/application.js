@@ -44,7 +44,8 @@ function hide_deactivated_users() {
 
 function select_students() 
 {
-    $.get('/assessment/studentslist/1', {}, function(t) 
+    var loc = window.location.pathname;
+    $.get(loc, {}, function(t) 
     {
        var t = $("#center-box").bootstrapTransfer();
        t.populate([

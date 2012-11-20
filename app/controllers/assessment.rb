@@ -30,4 +30,21 @@ CourseOutcomes.controllers :assessment do
     
     render "/assessment/assign", locals: {page_title: "Student Assignment", course: course}
   end
+  
+  get :all_students, with: [:course_id, :in] do
+    if params[:in] == "in"
+      students = Student.joins(:courses).where("courses.id = ?", params[:course_id])
+    else
+      
+      students = Student.joins(:courses).where("courses.id != ?", params[:course_id])
+    end
+    json_data = students.map do |student|
+      {value: student.student_id, content: "#{student.last_name}, #{student.first_name}" }
+    end
+    
+    json_data = JSON::dump(json_data)
+    
+    content_type "text/json"
+    return json_data
+  end
 end

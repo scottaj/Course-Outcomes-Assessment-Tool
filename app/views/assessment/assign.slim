@@ -1,5 +1,19 @@
 div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
-  div class="span6"
+  div class="span6" id="center-box"
+  javascript: 
+      var loc = window.location.pathname;
+      $.get(loc, {}, function(t) 
+      {
+       var t = $("#center-box").bootstrapTransfer();
+       var loc2 = window.location.pathname.split('/');
+       loc2 = loc2[loc2.length - 1]
+        $.get('/assessment/all_students/' + loc2 + "/out", {}, function(json_data)
+        {
+          t.populate(json_data);
+        });
+      });
+   
+
 		
   
