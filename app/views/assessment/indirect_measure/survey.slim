@@ -1,0 +1,14 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    table class="table table-striped table-bordered"
+      thead
+        tr
+          th Question
+          th Outcome(s)
+      tbody
+        - questions.each do |question|
+          tr
+            td = question.question
+            td = question.outcomes.map {|o| o.enum}.sort.join(", ").chomp(',')
+  div id="right" class="span2"

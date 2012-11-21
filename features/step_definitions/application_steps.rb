@@ -88,6 +88,20 @@ Given /^the following program outcome exists:$/ do |table|
   program_outcome.save
 end
 
+Given /^the following survey question exists$/ do |table|
+  survey_question_attr = table.rows_hash
+  survey_question = SurveyQuestion.new
+
+  survey_question_attr["course"] = Course.find_by_course_title(survey_question_attr["course"])
+  
+  survey_question_attr["outcomes"] = survey_question_attr["outcomes"].split(/, */).map {|o| Outcome.find_by_outcome(o)}
+
+  survey_question_attr.each {|attr, value| survey_question.send(:"#{attr}=", value)}
+
+  survey_question.should be_valid
+  survey_question.save
+end
+
 Given /^I am logged in as a normal user$/ do
   u = User.create(username: "reynoldsb", password: "abcd1234", role: :user)
   visit "/login"

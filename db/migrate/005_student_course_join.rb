@@ -7,6 +7,6 @@ class StudentCourseJoin < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :students_courses
+    drop_table :courses_students
   end
 end
