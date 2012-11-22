@@ -1,0 +1,14 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - form_tag "", method: "post", class: "center form-horizontal well" do
+      h2 New Question
+      div class="row-fluid"
+        == label_tag :question, class: "span4"
+        == text_field_tag :question, id: :question, required: true, class: "span8"
+      div class="row-fluid"
+        == label_tag :outcomes, class: "span4"
+        == select_tag :outcomes, id: :outcomes, multiple: true, required: true, options: course.outcomes.map {|o| ["#{o.enum}. #{o.outcome}", o.enum]}, class: "span8"
+      div class="row-fluid"
+        == submit_tag "Create Question", class: "btn btn-primary"
+  div id="right" class="span2"
