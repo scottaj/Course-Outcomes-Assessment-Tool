@@ -104,6 +104,7 @@ Given /^I am logged in as an admin user$/ do
   click_on "Log In"
 end
 
+
 When /^I visit the assessment for the following course:$/ do |table|
   course_params = table.rows_hash
 

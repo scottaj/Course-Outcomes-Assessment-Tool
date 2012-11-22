@@ -47,4 +47,15 @@ CourseOutcomes.controllers :assessment do
     content_type "text/json"
     return json_data
   end
+  
+  post :assign, with: :course_id do
+    course = Course.find(params[:course_id])
+
+    students = params[:students].map do |student|
+      Student.find_by_student_id(student)
+    end
+    
+    course.students = students
+    course.save
+  end
 end

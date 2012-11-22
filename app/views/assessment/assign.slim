@@ -1,6 +1,7 @@
 div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
   div class="span6" id="center-box"
+  button id="#submit-button" onclick="assign_students();" class="btn btn-success" Submit Changes
   javascript: 
     function load_select() {  
       var loc = window.location.pathname;
@@ -22,4 +23,17 @@ div class="row-fluid"
         });                
       });
     }
-    $(load_select);    
+    $(load_select);
+  javascript:
+    function assign_students() {
+      $.post('/assessment/assign/1', {"students": $('#center-box').data().bootstrapTransfer.get_values()}, 
+      function()
+      {  
+      
+      });
+       var loc2 = window.location.pathname.split('/');
+       loc2 = loc2[loc2.length - 1]
+       window.location.replace('/assessment/studentslist/'+loc2);
+        
+    }
+  
