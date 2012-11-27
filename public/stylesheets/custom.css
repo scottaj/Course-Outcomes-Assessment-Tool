@@ -78,3 +78,19 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 #right .btn {
     margin-bottom: 1px;
 }
+
+.selector-available {
+  color: black;
+}
+
+.bootstrap-transfer-container .selector-available h2, .bootstrap-transfer-container .selector-chosen h2 {
+  border-radius: 0px;
+}
+
+.bootstrap-transfer-container a.selector-clearall {
+  background: none;
+}
+
+.bootstrap-transfer-container a.selector-chooseall {
+  background: none;
+}

@@ -3,6 +3,7 @@ Feature: Student course assignment
   As a professor
   I should be able to move and remove students from courses I teach
   
+  @javascript
   Scenario: Going to assessment page as a professor
     Given the following admin user exists:
     | username   | staffordm |
@@ -15,7 +16,6 @@ Feature: Student course assignment
     | term_number  |         1 |
     | term_year    |      2012 |
     | professor    | staffordm |
-    Then I should be on "the home page"
-    Then I should see "CSSE 171-1"
-    When I click "CSSE 171-1"
-    Then I should be on "the assessment page"
+    And I am logged in as the user "staffordm" with the password "a1b2c3d4"
+    When I click "QB 101-1"
+    Then I should see "Students"

@@ -26,13 +26,14 @@ div class="row-fluid"
     $(load_select);
   javascript:
     function assign_students() {
-      $.post('/assessment/assign/1', {"students": $('#center-box').data().bootstrapTransfer.get_values()}, 
+      var loc2 = window.location.pathname.split('/');
+       loc2 = loc2[loc2.length - 1]
+      $.post('/assessment/assign/'+loc2, {"students": $('#center-box').data().bootstrapTransfer.get_values()}, 
       function()
       {  
       
       });
-       var loc2 = window.location.pathname.split('/');
-       loc2 = loc2[loc2.length - 1]
+     
        window.location.replace('/assessment/studentslist/'+loc2);
         
     }

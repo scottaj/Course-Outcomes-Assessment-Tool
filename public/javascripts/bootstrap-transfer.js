@@ -146,7 +146,7 @@
                 <tr>\
                     <td width="50%">\
                         <div class="selector-available">\
-                            <h2>Available</h2>\
+                            <h2>All Students</h2>\
                             <div class="selector-filter">\
                                 <table width="100%" border="0">\
                                     <tr>\
@@ -163,7 +163,7 @@
                             </div>\
                             <select multiple="multiple" class="filtered remaining">\
                             </select>\
-                            <a href="#" class="selector-chooseall">Choose all</a>\
+                            <a href="#" class="selector-chooseall"><i class="icon-forward icon-white"/>Choose all</a>\
                         </div>\
                     </td>\
                     <td>\
@@ -174,13 +174,13 @@
                     </td>\
                     <td width="50%">\
                         <div class="selector-chosen">\
-                            <h2>Chosen</h2>\
+                            <h2>Enrolled Students</h2>\
                             <div class="selector-filter right">\
                                 <p>Select then click</p><span class="illustration"></span>\
                             </div>\
                             <select multiple="multiple" class="filtered target">\
                             </select>\
-                            <a href="#" class="selector-clearall">Clear all</a>\
+                            <a href="#" class="selector-clearall"><i class="icon-backward icon-white"/>Clear all</a>\
                         </div>\
                     </td>\
                 </tr>\
