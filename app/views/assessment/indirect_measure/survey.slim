@@ -1,0 +1,23 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    table class="table table-striped table-bordered"
+      thead
+        tr
+          th Question
+          th Outcome(s)
+          th Edit/Delete
+      tbody
+        - questions.each do |question|
+          tr
+            td = question.question
+            td = question.outcomes.map {|o| o.enum}.sort.join(", ").chomp(',')
+            td
+              a href="#{url_for(:indirect, :measure, :edit, assessment_id: course.id, question_id: question.id)}" id="edit-#{question.id}"
+                i class="icon-pencil icon-white"
+              span &#47
+              a href="#{url_for(:indirect, :measure, :delete, assessment_id: course.id, question_id: question.id)}" id="delete-#{question.id}"
+                i class="icon-trash icon-white"
+  div id="right" class="span2"
+    span class="span1"
+    a href="#{url_for(:indirect, :measure, :create, assessment_id: course.id)}" class="span10 btn btn-success" New Question

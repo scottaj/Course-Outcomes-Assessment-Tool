@@ -12,3 +12,7 @@ div class="span4 well" id="left"
       a class="btn btn-large btn-inverse btn-block" href="#{url_for(:assessment, :index, course_id: course.id)}"        
         i class="icon-tasks icon-white"
         span class="navbtn-text" &nbspOutcomes
+    li
+      a class="btn btn-large btn-inverse btn-block" href="#{url_for(:indirect, :measure, :index, assessment_id: course.id)}"        
+        i class="icon-check icon-white"
+        span class="navbtn-text" &nbspStudent Surveys

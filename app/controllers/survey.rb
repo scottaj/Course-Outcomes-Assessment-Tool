@@ -4,6 +4,10 @@ CourseOutcomes.controllers :survey do
   before :login do
     redirect url_for(:survey, :index) if session[:student_token]
   end
+
+  before /^(?!\/survey\/login).*$/ do
+    redirect url_for(:survey, :login) unless session[:student_token]
+  end
   
   get :login, map: "/survey/login" do
     render "survey/login", locals: {page_title: "Login", error: params[:error]}

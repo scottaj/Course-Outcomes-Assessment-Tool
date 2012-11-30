@@ -12,6 +12,7 @@ class Outcome < ActiveRecord::Base
   belongs_to :course, class_name: "Course", foreign_key: "course_id", inverse_of: :outcomes
 
   has_and_belongs_to_many :program_outcomes, class_name: "ProgramOutcome"
+  has_and_belongs_to_many :survey_questions, class_name: "SurveyQuestion"
   
   validates_uniqueness_of :enum, scope: :course_id
   validates_presence_of :course

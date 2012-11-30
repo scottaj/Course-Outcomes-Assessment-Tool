@@ -8,5 +8,5 @@
 #   question => SurveyQuestion Model Instance
 #
 class SurveyResponse < ActiveRecord::Base
-  belongs_to :question, class_name: "SurveyQuestion", foreign_key: "survey_questions_id", inverse_of: :responses
+  belongs_to :question, class_name: "SurveyQuestion", foreign_key: "survey_question_id", inverse_of: :responses
 end

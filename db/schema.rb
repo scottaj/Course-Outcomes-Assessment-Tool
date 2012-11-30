@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 17) do
 
   create_table "courses", :force => true do |t|
     t.string   "course_name"
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(:version => 14) do
     t.integer "program_outcome_id", :null => false
   end
 
+  create_table "outcomes_survey_questions", :id => false, :force => true do |t|
+    t.integer "outcome_id",         :null => false
+    t.integer "survey_question_id", :null => false
+  end
+
   create_table "program_outcomes", :force => true do |t|
     t.string   "enum"
     t.string   "outcome"
@@ -60,17 +65,17 @@ ActiveRecord::Schema.define(:version => 14) do
 
   create_table "survey_questions", :force => true do |t|
     t.text     "question"
-    t.integer  "courses_id", :null => false
+    t.integer  "course_id",  :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "survey_responses", :force => true do |t|
-    t.integer  "survey_questions_id"
+    t.integer  "survey_question_id"
     t.integer  "response"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.boolean  "locked",              :default => true
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "locked",             :default => true
   end
 
   create_table "survey_trackers", :force => true do |t|
