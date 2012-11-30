@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 17) do
+ActiveRecord::Schema.define(:version => 18) do
 
   create_table "courses", :force => true do |t|
     t.string   "course_name"
@@ -73,15 +73,15 @@ ActiveRecord::Schema.define(:version => 17) do
   create_table "survey_responses", :force => true do |t|
     t.integer  "survey_question_id"
     t.integer  "response"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.boolean  "locked",             :default => true
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "survey_trackers", :force => true do |t|
     t.integer "student_id",                    :null => false
     t.integer "course_id",                     :null => false
     t.boolean "complete",   :default => false
+    t.boolean "locked"
   end
 
   create_table "users", :force => true do |t|
