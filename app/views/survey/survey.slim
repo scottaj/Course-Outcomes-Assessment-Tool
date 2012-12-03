@@ -1,0 +1,25 @@
+div class="row-fluid"
+  div class="span2"
+    div class="row-fluid"
+      span class="span1"
+      a href="#{url_for(:survey, :index)}" class="span10 btn btn-large btn-success" Return to Survey List
+  div class="span8"
+    - if params[:error]
+      p class="form-error" Please answer all questions
+    - form_tag "", method: "post", class: "center" do
+      - questions.each do |question|
+        div class="well"
+          div class="row-fluid"
+            h4 = question.question
+            - field_set_tag do              
+              div class="row-fluid"
+                - 1.upto 10 do |i|
+                  == radio_button_tag i, name: question.id, required: true, value: i, class: "span1"
+              div class="row-fluid"
+                span class="center survey-legend"
+                  i class="icon-arrow-left"
+                  span Disagree - Agree
+                  i class="icon-arrow-right"
+      span class="span6"
+      == submit_tag "Submit Survey", class: "btn btn-large btn-primary"
+  div class="span2"

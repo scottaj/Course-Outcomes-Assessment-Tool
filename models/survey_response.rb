@@ -4,7 +4,6 @@
 # Accessor Methods
 #   id       => Integer primary key
 #   response => Integer
-#   locked   => Boolean, default: false
 #   question => SurveyQuestion Model Instance
 #
 class SurveyResponse < ActiveRecord::Base

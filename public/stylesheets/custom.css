@@ -1,12 +1,12 @@
 body {
     padding-top: 60px;
-		padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .sidebar-nav {
-	padding: 10px 0;
-	width: 50.0%
-	}
+    padding: 10px 0;
+    width: 50.0%
+}
 
 .center {
     float: none;
@@ -50,16 +50,16 @@ body {
 }
 
 .btn-success {
- float: left;
+    float: left;
 }
 
 a.homepage-nav {
-  display: block;
-  color: #333333;
+    display: block;
+    color: #333333;
 }
 
 a.homepage-nav h4 {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 a.homepage-nav span {
@@ -67,30 +67,48 @@ a.homepage-nav span {
     display: block;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar .brand {
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+h1, h2, h3, h4, h5, h6, legend, .navbar .brand {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .deactivated-user {
-  background-color: red;
+    background-color: red;
 }
 
 #right .btn {
     margin-bottom: 1px;
 }
 
+form.center fieldset {
+    border: 1px solid #666666;
+    box-shadow: 1px 1px 4px #666666;
+    border-radius: 100px;
+}
+
+.survey-legend {
+    color: #333333;
+    font-size: 1em;
+    border-top: 1px solid #333333;
+}
+
+.survey-legend i {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+}
+
 .selector-available {
-  color: black;
+    color: black;
 }
 
 .bootstrap-transfer-container .selector-available h2, .bootstrap-transfer-container .selector-chosen h2 {
-  border-radius: 0px;
+    border-radius: 0px;
 }
 
 .bootstrap-transfer-container a.selector-clearall {
-  background: none;
+    background: none;
 }
 
 .bootstrap-transfer-container a.selector-chooseall {
-  background: none;
+    background: none;
 }

@@ -50,12 +50,15 @@ CourseOutcomes.controllers :assessment do
   
   post :assign, with: :course_id do
     course = Course.find(params[:course_id])
-
+    params[:students] ||= []
+    
     students = params[:students].map do |student|
       Student.find_by_student_id(student)
     end
     
     course.students = students
     course.save
+
+    setup_trackers(course)
   end
 end

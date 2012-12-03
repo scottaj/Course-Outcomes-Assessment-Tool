@@ -15,4 +15,8 @@ class Student < ActiveRecord::Base
   
   validates_format_of :student_id, with: /^T[0-9]{8}$/i, message: "T-Number format must be T########"
   validates_uniqueness_of :student_id, message: "T-Number must be unique!"
+
+  def name()
+    return "#{self.first_name} #{self.last_name}"
+  end
 end

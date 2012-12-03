@@ -4,6 +4,7 @@
 # Accessor Methods
 #   id       => Integer primary key
 #   complete => Boolean, default: false
+#   locked   => Boolean
 #   student  => Student Model Instance
 #   course   => Course Model Instance
 #

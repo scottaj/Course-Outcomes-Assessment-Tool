@@ -1,0 +1,17 @@
+div class="row-fluid"
+  div class="span2"
+  div class="span8"
+    h1 = student.name
+    - unless surveys.empty?
+      h2 Available Surveys
+      - surveys.each do |survey|
+        div class="row-fluid well"
+          h4 class="span8"
+            #{survey.course.course_title}-#{survey.course.section}
+            span #{survey.course.course_name}
+          a href="#{url_for(:survey, :take, course_id: survey.course.id)}" class="span4 btn btn-primary"
+            span Begin
+            i class="icon-share-alt icon-white"
+    -else
+      h2 No Available Surveys  
+  div class="span2"

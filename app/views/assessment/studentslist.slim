@@ -1,7 +1,17 @@
 div class="row-fluid"
   == partial "/partials/assessment/assessment_nav", locals: {course: course}
-  div class="span8" id="center-box"
-    == partial "/partials/assessment/student_list_nav", locals: {course: course}
-    div class="span6"
-    a href="/assessment/assign/#{course.id}" class="span3 btn btn-primary" Assign Student
-    span class="span6"
+  div class="span6" id="center-box"
+    table class="table table-striped table-bordered"
+      tr
+        th First Name
+        th Last Name
+        th Student ID
+      -course.students.each do |student|
+        tr
+          td = student.first_name
+          td = student.last_name
+          td = student.student_id
+  div class="span2"
+    div class="row-fluid"
+      span class="span1"
+      a href="/assessment/assign/#{course.id}" class="span10 btn btn-success" Assign Student

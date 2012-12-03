@@ -61,4 +61,15 @@ CourseOutcomes.controllers :indirect_measure, parent: :assessment do
 
     redirect url_for(:indirect, :measure, :index, assessment_id: params[:assessment_id])
   end
+
+  get :lock, map: "survey/admin/lock" do
+    course = Course.find(params[:assessment_id])
+
+    course.survey_trackers.each do |st|
+      st.locked = !st.locked
+      st.save
+    end
+
+    redirect url_for(:indirect, :measure, :index, assessment_id: params[:assessment_id])
+  end
 end
