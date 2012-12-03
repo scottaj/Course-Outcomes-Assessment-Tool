@@ -22,6 +22,11 @@ CourseOutcomes.controllers :survey do
       redirect url_for(:survey, :login, error: "true")
     end
   end
+
+  get :logout, map: "/survey/logout" do
+    session.clear
+    redirect url_for(:survey, :login)
+  end
   
   get :index, map: "/survey/select" do
     student = Student.find(session[:student_token])
