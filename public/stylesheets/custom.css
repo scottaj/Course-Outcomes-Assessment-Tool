@@ -85,6 +85,11 @@ form.center fieldset {
     border-radius: 100px;
 }
 
+input[type="radio"] {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .survey-legend {
     color: #333333;
     font-size: 1em;

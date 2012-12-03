@@ -13,7 +13,7 @@ div class="row-fluid"
             h4 = question.question
             - field_set_tag do              
               div class="row-fluid"
-                - 1.upto 10 do |i|
+                - 1.upto 5 do |i|
                   == radio_button_tag i, name: question.id, required: true, value: i, class: "span1"
               div class="row-fluid"
                 span class="center survey-legend"
@@ -23,3 +23,5 @@ div class="row-fluid"
       span class="span6"
       == submit_tag "Submit Survey", class: "btn btn-large btn-primary"
   div class="span2"
+
+
