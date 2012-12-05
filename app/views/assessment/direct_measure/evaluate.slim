@@ -1,0 +1,19 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - form_tag "", method: "post", class: "center well" do
+      - if assignment.parts.empty?
+        == partial "/partials/assessment/normal_assignment_eval", locals: {course: course, assignment: assignment}
+      - else
+        == partial "/partials/assessment/multi_part_assignment_eval", locals: {course: course, assignment: assignment}
+      div class="row-fluid"
+        == submit_tag "Save", class: "btn btn-primary"
+
+
+
+
+
+
+
+
+

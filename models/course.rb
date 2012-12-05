@@ -14,6 +14,7 @@
 #   outcomes         => Array of Outcome Model Instances
 #   survey_trackers  => Array of SurveyTracker Model Instances
 #   survey_questions => Array of SurveyQuestion Model Instances
+#   assignments      => Array of Assignment Model Instances
 #
 class Course < ActiveRecord::Base
   belongs_to :professor, class_name: "User", foreign_key: "user_id", inverse_of: :courses
@@ -22,6 +23,7 @@ class Course < ActiveRecord::Base
   has_many :outcomes, dependent: :destroy, inverse_of: :course
   has_many :survey_trackers, dependent: :destroy, inverse_of: :course
   has_many :survey_questions, dependent: :destroy, inverse_of: :course
+  has_many :assignments, dependent: :destroy, inverse_of: :course
   
   validates_presence_of :course_name, :course_title, :term_number, :term_year, :professor, message: "Please enter all required fields"
 

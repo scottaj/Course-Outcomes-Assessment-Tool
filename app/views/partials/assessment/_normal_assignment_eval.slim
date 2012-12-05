@@ -1,0 +1,4 @@
+div class="row-fluid"
+  p class="description" How many students secured a passing grade (>=70%) on this assignment?
+div class="row-fluid"
+  == number_field_tag :passing, id: :passing, min: 0, max: course.students.size, value: assignment.number_passing, required: true, class: "span4"

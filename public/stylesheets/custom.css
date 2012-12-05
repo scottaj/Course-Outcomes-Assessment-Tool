@@ -106,6 +106,21 @@ input[type="radio"] {
     color: black;
 }
 
+.btn-nav {
+    margin-bottom: 1px;
+}
+
+.description {
+    font-style: italic;
+}
+
+.box-info {
+    padding: 6px;
+    box-shadow: 0px 0px 6px white;
+    border-radius: 4px;
+}
+
+/* Boostrap-transfer Overrides */
 .bootstrap-transfer-container .selector-available h2, .bootstrap-transfer-container .selector-chosen h2 {
     border-radius: 0px;
 }

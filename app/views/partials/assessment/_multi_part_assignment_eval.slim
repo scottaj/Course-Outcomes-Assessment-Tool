@@ -1,0 +1,7 @@
+div class="row-fluid"
+  p class="description" How many students achieved a passing grade (>=70%) on each of the following assignment components.
+- assignment.parts.each do |part|
+  div class="row-fluid"
+    == label_tag part.name, name: "passing-#{part.id}", class: "span8"
+    == number_field_tag "passing-#{part.id}", id: "passing-#{part.id}", min: 0, max: course.students.size, value: part.number_passing, required: true, class: "span4"
+  

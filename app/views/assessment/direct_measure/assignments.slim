@@ -1,0 +1,53 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - top_level_assignments.each do |assignment|
+      div class="well assignment-listing row-fluid"
+        div class="span8"
+          h2 #{assignment.name}
+          p class="description box-info" #{assignment.description}
+          - unless assignment.parts.empty?
+            table class="table table-striped table-bordered"
+              thead
+                tr
+                  th Sub-Assignment
+                  th Outcomes
+                  th Number of students passing
+                  th Edit/Delete
+              tbody
+                - assignment.parts.each do |part|
+                  tr
+                    td #{part.name}
+                    td #{part.outcomes.map {|o| o.enum}.join(', ').chomp(',')}
+                    td #{part.number_passing or 0}/#{course.students.size}
+                    td
+                      a href="#{url_for(:direct, :measures, :edit, assessment_id: course.id, assignment: part.id)}"
+                        i class="icon-edit icon-white"
+                      span &#47
+                      a href="#{url_for(:direct, :measures, :delete, assessment_id: course.id, assignment: part.id)}"
+                        i class="icon-trash icon-white"        
+          - else
+            p class="box-info" Outcomes: #{assignment.outcomes.map {|o| o.enum}.join(', ').chomp(',')}<br />#{assignment.number_passing or 0}/#{course.students.size} students passing this assignment.
+        div class="span4"
+          div class="row-fluid"
+            span class="span9"
+            a href="#{url_for(:direct, :measures, :edit, assessment_id: course.id, assignment: assignment.id)}"
+              i class="icon-edit icon-white"
+            a href="#{url_for(:direct, :measures, :delete, assessment_id: course.id, assignment: assignment.id)}"
+              i class="icon-trash icon-white"
+          div class="row-fluid"
+            span class="span2"
+            a href="#{url_for(:direct, :measures, :evaluate, assessment_id: course.id, assignment: assignment.id)}" class="btn btn-success span10" Evaluate Assignment
+  div id="right" class="span2"
+    div class="row-fluid"
+      span class="span1"
+      a href="#{url_for(:direct, :measures, :create, assessment_id: course.id)}" class="span10 btn btn-success" Create Assignment
+
+
+
+
+
+
+
+
+

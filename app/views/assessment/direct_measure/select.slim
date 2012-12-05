@@ -1,0 +1,21 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    div class="well"
+      div class="row-fluid"
+        span class="span2"
+        a href="#{url_for(:direct, :measures, :create, assessment_id: course.id, type: 'normal')}" class="span8 btn btn-primary btn-large btn-nav" Create Normal Assignment
+      div class="row-fluid"
+        span class="span2"
+        a href="#{url_for(:direct, :measures, :create, assessment_id: course.id, type: 'multi')}" class="span8 btn btn-primary btn-large btn-nav" Create Multi-part Assignment
+      div class="row-fluid"
+        span class="span2"
+        a href="#{url_for(:direct, :measures, :create, assessment_id: course.id, type: 'component')}" class="span8 btn btn-primary btn-large btn-nav" Create Multi-part Assignment Component       
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - form_tag "", method: "post", class: "well center" do
+      div class="row-fluid"
+        == label_tag :assignment_name, class: "span4"
+        == text_field_tag :assignment_name, id: :assignment_name, class: "span8", required: true, value: assignment.name
+      div class="row-fluid"
+        == label_tag :assignment_description, class: "span4"
+        == text_area_tag :assignment_description, id: :assignment_description, class: "span8", spellcheck: true, rows: 4, value: assignment.description
+      div class="row-fluid"
+        == label_tag :outcomes, class: "span4"
+        == select_tag :outcomes, id: :outcomes, multiple: true, required: true, options: course.outcomes.map {|o| ["#{o.enum}. #{o.outcome}", o.enum]}, class: "span8", selected: assignment.outcomes.map {|o| o.enum}
+      div class="row-fluid"
+        == submit_tag "Save", class: "btn btn-primary"

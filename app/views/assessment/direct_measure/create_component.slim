@@ -1,0 +1,15 @@
+div class="row-fluid"
+  == partial "/partials/assessment/assessment_nav", locals: {course: course}
+  div id="center" class="span6"
+    - form_tag "", method: "post", class: "well center" do
+      div class="row-fluid"
+        == label_tag :parent_assignment, class: "span4"
+        == select_tag :parent_assignment, id: :parent_assignment, required: true, options: course.assignments.where(assignment_id: nil).find_all {|a| a.outcomes.empty?}.map {|a| [a.name, a.id]}, class: "span8"    
+      div class="row-fluid"
+        == label_tag :component_name, class: "span4"
+        == text_field_tag :component_name, id: :component_name, class: "span8", required: true
+      div class="row-fluid"
+        == label_tag :outcomes, class: "span4"
+        == select_tag :outcomes, id: :outcomes, multiple: true, required: true, options: course.outcomes.map {|o| ["#{o.enum}. #{o.outcome}", o.enum]}, class: "span8"
+      div class="row-fluid"
+        == submit_tag "Create", class: "btn btn-primary"
