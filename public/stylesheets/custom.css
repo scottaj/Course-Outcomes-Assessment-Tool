@@ -120,6 +120,33 @@ input[type="radio"] {
     border-radius: 4px;
 }
 
+.status-good {
+    border-radius: 100%;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border: 1px solid #666666;
+    float: left;
+}
+
+.status-bad {
+    border-radius: 100%;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: 1px solid #666666;
+    float: left;
+}
+
+.status-text {
+    font-size: 10px;
+    float: right;
+}
+
 /* Boostrap-transfer Overrides */
 .bootstrap-transfer-container .selector-available h2, .bootstrap-transfer-container .selector-chosen h2 {
     border-radius: 0px;
