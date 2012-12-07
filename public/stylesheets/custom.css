@@ -189,8 +189,36 @@ input[type="radio"] {
 
 .bootstrap-transfer-container a.selector-clearall {
     background: none;
+    font-size: 1em;
 }
 
 .bootstrap-transfer-container a.selector-chooseall {
     background: none;
+    font-size: 1em;
+}
+
+.bootstrap-transfer-container a.selector-chooseall i {
+    margin-left: 10px;
+}
+
+.bootstrap-transfer-container .selector-add {
+    background: none;
+    display: inline;
+}
+
+.bootstrap-transfer-container .selector-remove {
+    background: none;
+    display: inline;
+}
+
+.bootstrap-transfer-container .selector-available input {
+    width: 99%;
+}
+
+.bootstrap-transfer-container select.filtered.target {
+    height: 12em;
+}
+
+.bootstrap-transfer-container select.filtered.remaining {
+    height: 10em;
 }

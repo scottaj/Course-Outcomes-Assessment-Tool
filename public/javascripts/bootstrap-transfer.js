@@ -141,7 +141,7 @@
         });
     };
     $.fn.bootstrapTransfer.defaults = {
-        'template':                                         
+        'template':
             '<table width="100%" cellspacing="0" cellpadding="0">\
                 <tr>\
                     <td width="50%">\
@@ -163,21 +163,18 @@
                             </div>\
                             <select multiple="multiple" class="filtered remaining">\
                             </select>\
-                            <a href="#" class="selector-chooseall"><i class="icon-forward icon-white"/>Choose all</a>\
+                            <a href="#" class="selector-chooseall">Choose all<i class="icon-forward icon-white"/></a>\
                         </div>\
                     </td>\
                     <td>\
                         <div class="selector-chooser">\
-                            <a href="#" class="selector-add">add</a>\
-                            <a href="#" class="selector-remove">rem</a>\
+                            <a href="#" class="selector-add"><i class="icon-arrow-right icon-white"/></a>\
+                            <a href="#" class="selector-remove"><i class="icon-arrow-left icon-white"/></a>\
                         </div>\
                     </td>\
                     <td width="50%">\
                         <div class="selector-chosen">\
                             <h2>Enrolled Students</h2>\
-                            <div class="selector-filter right">\
-                                <p>Select then click</p><span class="illustration"></span>\
-                            </div>\
                             <select multiple="multiple" class="filtered target">\
                             </select>\
                             <a href="#" class="selector-clearall"><i class="icon-backward icon-white"/>Clear all</a>\
@@ -185,7 +182,6 @@
                     </td>\
                 </tr>\
             </table>',
-        'height': '10em',
         'hilite_selection': true,
         'target_id': ''
     }
