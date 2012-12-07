@@ -24,22 +24,25 @@ div class="container-fluid"
             a href="#content3" data-toggle="tab" Program Outcome Status
       div class="tabbable"
         div class="tab-content"
-          div id="content1" class="tab-pane fade"        
-          div id="content2" class="tab-pane fade"
-          div id="content3" class="tab-pane fade"
+          div id="content1" class="tab-pane"
+          div id="content2" class="tab-pane"
+          div id="content3" class="tab-pane"
 
 javascript:
   $('#tab1 a').click(function(e) {
     e.preventDefault();
     $(this).tab('show');
+    $("#content1").addClass("fade in");
   });
   $('#tab2 a').click(function(e) {
     e.preventDefault();
     $(this).tab('show');
+    $("#content2").addClass("fade in");
   });
   $('#tab3 a').click(function(e) {
     e.preventDefault();
     $(this).tab('show');
+    $("#content3").addClass("fade in");
   });
 
   $.post('reports/course/status', function(data) {
