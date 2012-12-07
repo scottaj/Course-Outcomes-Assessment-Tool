@@ -14,4 +14,42 @@ div class="container-fluid"
                   em #{course.course_name} 
                 span
                   em Term #{course.term_number} #{course.term_year}
-                
+    div id="center" class="span7"
+      ul class="nav nav-tabs"
+        li id="tab1"
+          a href="#content1" data-toggle="tab" Course Status
+          li id="tab2"
+            a href="#content2" data-toggle="tab" User Status
+          li id="tab3"
+            a href="#content3" data-toggle="tab" Program Outcome Status
+      div class="tabbable"
+        div class="tab-content"
+          div id="content1" class="tab-pane fade"        
+          div id="content2" class="tab-pane fade"
+          div id="content3" class="tab-pane fade"
+
+javascript:
+  $('#tab1 a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+  $('#tab2 a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+  $('#tab3 a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+
+  $.post('reports/course/status', function(data) {
+    $('#content1').append(data);
+  });
+  $.post('reports/user/status', function(data) {
+    $('#content2').append(data);
+  });
+  $.post('reports/program/status', function(data) {
+    $('#content3').append(data);  
+  });
+
+  $('#tab1 a').tab('show')

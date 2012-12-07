@@ -1,0 +1,30 @@
+- terms.each do |year|
+  - year.each do |term|
+    h1 Term #{term.first.term_number} #{term.first.term_year} 
+    - term.each do |course|
+      div class="well course-box"
+        div class="row-fluid"
+          h2 class="span10" #{course.course_title}-#{course.section}
+          - if course.archived
+            span class="badge badge-important"
+              i class="icon-lock icon-white"
+              | Archived
+        div class="row-fluid"
+          span class="description" #{course.course_name} - #{course.professor.name}
+        div class="status-box"
+          div class="row-fluid"
+            h4 class="span6" Course Outcome Average:
+            h4 class="span6" Number of Outcomes Passing:
+          div class="row-fluid"    
+            div class="span6"
+              div class="status-#{course.passing_by_average? ? 'good' : 'bad'}"
+              span class="status-text" #{(course.outcome_average * 100).to_i}%
+            div class="span6"
+              div class="status-#{course.passing_by_count? ? 'good' : 'bad'}"
+              span class="status-text" #{course.outcomes.find_all {|o| o.passing?}.size} &#47 #{course.outcomes.size}          
+
+
+
+
+
+

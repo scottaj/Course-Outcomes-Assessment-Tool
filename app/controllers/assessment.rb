@@ -3,7 +3,7 @@ CourseOutcomes.controllers :assessment do
     user = User.find(session[:token])
     if params[:course_id]
       course = Course.find(params[:course_id])
-      halt 403 unless course.professor == user or user.admin?
+      halt 403 unless course.professor.id == user.id or user.admin?
     end
   end
 

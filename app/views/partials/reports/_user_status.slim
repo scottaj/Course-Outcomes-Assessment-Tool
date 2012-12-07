@@ -1,0 +1,20 @@
+- users.each do |user|
+  div class="well"
+    div class="row-fluid"
+      h2 class="span10" #{user.name}
+      - unless user.active
+        span class="badge badge-important"
+          i class="icon-lock icon-white"
+          | Inactive
+    div class="row-fluid"
+      div class="status-box"
+        div class="row-fluid"
+          h4 class="span6" Outcome Average for Courses:
+          h4 class="span6" Number of Courses Passing:
+        div class="row-fluid"    
+          div class="span6"
+            div class="status-#{user.courses_passing_by_average? ? 'good' : 'bad'}"
+            span class="status-text" #{(user.course_average * 100).to_i}%
+          div class="span6"
+            div class="status-#{user.courses_passing_by_count? ? 'good' : 'bad'}"
+            span class="status-text" #{user.courses.find_all {|c| c.passing?}.size} &#47 #{user.courses.size}

@@ -1,0 +1,18 @@
+h1 Program Outcomes Status: All Time
+- outcomes.each do |outcome|
+  div class="well"
+    h2
+      | #{outcome.enum})&nbsp
+      span class="description" #{outcome.outcome}
+    div class="row-fluid"
+      div class="status-box"
+        div class="row-fluid"
+          h4 class="span6" Average for Associated Course Outcomes:
+          h4 class="span6" Number of Passing Course Outcomes:
+        div class="row-fluid"    
+          div class="span6"
+            div class="status-#{outcome.passing_by_average? ? 'good' : 'bad'}"
+            span class="status-text" #{(outcome.outcome_average * 100).to_i}%
+          div class="span6"
+            div class="status-#{outcome.passing_by_count? ? 'good' : 'bad'}"
+            span class="status-text" #{outcome.outcomes.find_all {|c| c.passing?}.size} &#47 #{outcome.outcomes.size}          

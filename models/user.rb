@@ -63,4 +63,24 @@ class User < ActiveRecord::Base
   def role=(role)
     write_attribute(:role, ROLES[role.to_sym])
   end
+
+  def course_average()
+    averages = self.courses.map {|c| c.outcome_average}.find_all {|c| c > 0}
+
+    return averages.inject(:+) / averages.size.to_f
+
+  rescue NoMethodError, ZeroDivisionError
+    return 0
+  end
+  
+  def courses_passing_by_average?()
+    return self.course_average >= 0.7
+  end
+
+  def courses_passing_by_count?()
+    return (self.courses.find_all {|c| c.passing?}.size / self.courses.size.to_f) >= 0.7
+
+  rescue NoMethodError, ZeroDivisionError
+    return false
+  end
 end

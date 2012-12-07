@@ -48,4 +48,33 @@ class ProgramOutcome < ActiveRecord::Base
       end
     end
   end
+
+  def outcome_average(cond = {})
+    outcomes = self.outcomes.where(cond)
+
+    averages = outcomes.map {|o| o.outcome_average}.find_all {|avg| avg > 0}
+
+    return averages.inject(:+) / averages.size.to_f
+
+  rescue NoMethodError, ZeroDivisionError
+    return 0
+  end
+  
+  def passing_by_average?(cond = {})
+    return self.outcome_average >= 0.7
+  end
+  
+  def passing_by_count?(cond = {})
+    statuses = self.outcomes.where(cond).map {|o| o.passing?}
+    average = statuses.find_all {|stat| stat}.size / statuses.size.to_f
+
+    return average >= 0.7
+
+  rescue ZeroDivisionError, NoMethodError
+    return false
+  end
+
+  def passing?(cond = {})
+    return (self.passing_by_count?(cond) and self.passing_by_average?(cond))
+  end
 end

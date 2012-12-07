@@ -32,6 +32,30 @@ class Course < ActiveRecord::Base
   def to_s
     return "#{self.course_title.gsub(/\s+/, "").downcase}-#{self.section}-#{self.term_number}-#{self.term_year}"
   end
+
+  def passing_by_average?()
+    return self.outcome_average >= 0.7
+  end
+
+  def passing_by_count?()
+    return (self.outcomes.find_all {|o| o.passing?}.size / self.outcomes.size.to_f) >= 0.7
+
+  rescue NoMethodError, ZeroDivisionError
+    return false
+  end
+
+  def outcome_average()
+    averages = self.outcomes.map {|o| o.outcome_average}
+
+    return averages.inject(:+) / averages.size.to_f
+
+  rescue NoMethodError, ZeroDivisionError
+    return 0
+  end
+
+  def passing?()
+    return (self.passing_by_count? and self.passing_by_average?)
+  end
 end
 
 

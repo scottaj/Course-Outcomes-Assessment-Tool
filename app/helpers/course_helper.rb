@@ -3,7 +3,7 @@
 CourseOutcomes.helpers do
   def get_all_courses(archived)
     # This line can be a bit confusing. What it is doing is
-    # getting every unarchived course from all terms and then
+    # getting every course from all terms and then
     # dividing those courses into subsets according to term
     # year. It is then dividing each of those subsets into
     # subsets according to term number. 

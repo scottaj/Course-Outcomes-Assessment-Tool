@@ -114,6 +114,14 @@ input[type="radio"] {
     font-style: italic;
 }
 
+.standout {
+    background-color: #ad1d28;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .box-info {
     padding: 6px;
     box-shadow: 0px 0px 6px white;
@@ -126,9 +134,9 @@ input[type="radio"] {
     margin: 0;
     width: 20px;
     height: 20px;
-    background-color: green;
-    border: 1px solid #666666;
+    background-color: #02c002;
     float: left;
+    box-shadow: 0 0 6px #02c002;
 }
 
 .status-bad {
@@ -138,13 +146,40 @@ input[type="radio"] {
     width: 20px;
     height: 20px;
     background-color: red;
-    border: 1px solid #666666;
     float: left;
+    box-shadow: 0 0 6px red
+}
+
+.status-big {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .status-text {
     font-size: 10px;
     float: right;
+}
+
+.status-box {
+    box-shadow: 0 0 6px white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.status-box h4{
+    text-decoration: underline;
+}
+
+.status-box .status-good, .status-box .status-bad {
+    margin-right: 10px;
+}
+
+.status-box .status-text {
+    font-size: 14px;
+    float: left;
 }
 
 /* Boostrap-transfer Overrides */
