@@ -46,14 +46,14 @@ CourseOutcomes.controllers :direct_measures, parent: :assessment do
     when "normal"
       assn.name = params[:assignment_name]
       assn.description = params[:assignment_description]
-      assn.outcomes = params[:outcomes].map {|o| Outcome.find_by_enum(o)}
+      assn.outcomes = params[:outcomes].map {|o| course.outcomes.find_by_enum(o)}
     when "multi"
       assn.name = params[:assignment_name]
       assn.description = params[:assignment_description]
     when "component"
       assn.parent = Assignment.find(params[:parent_assignment])
       assn.name = params[:component_name]
-      assn.outcomes = params[:outcomes].map {|o| Outcome.find_by_enum(o)}
+      assn.outcomes = params[:outcomes].map {|o| course.outcomes.find_by_enum(o)}
     else
       halt 404
     end
