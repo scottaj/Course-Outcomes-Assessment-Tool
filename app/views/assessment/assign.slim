@@ -31,10 +31,7 @@ div class="row-fluid"
       $.post('/assessment/assign/'+loc2, {"students": $('#center-box').data().bootstrapTransfer.get_values()}, 
       function()
       {  
-      
-      });
-     
-       window.location.replace('/assessment/studentslist/'+loc2);
-        
+        window.location.replace('/assessment/studentslist/'+loc2);      
+      });             
     }
   
