@@ -44,11 +44,12 @@ CourseOutcomes.controllers :indirect_measure, parent: :assessment do
   end
 
   post :create, map: "survey/admin/question/create" do
+    course = Course.find(params[:assessment_id])
     question = SurveyQuestion.new
 
     question.question = params[:question]
     question.course = Course.find(params[:assessment_id])
-    question.outcomes = params[:outcomes].map {|o| Outcome.find_by_enum(o)}
+    question.outcomes = params[:outcomes].map {|o| course.outcomes.find_by_enum(o)}
 
     if question.valid?
       question.save
