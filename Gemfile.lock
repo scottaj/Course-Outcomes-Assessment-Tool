@@ -88,6 +88,8 @@ GEM
     padrino-mailer (0.10.7)
       mail (~> 2.3.0)
       padrino-core (= 0.10.7)
+    pg (0.14.1)
+    pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
     prickle (0.0.6)
       capybara
@@ -162,6 +164,7 @@ DEPENDENCIES
   database_cleaner
   mysql
   padrino (= 0.10.7)
+  pg
   prickle
   pry
   rack-test
