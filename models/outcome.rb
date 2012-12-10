@@ -22,7 +22,7 @@ class Outcome < ActiveRecord::Base
   end
 
   def generate_enum()
-    max = Outcome.maximum(:enum)
+    max = Outcome.where(course_id: self.course.id).maximum(:enum)
     return max ? max + 1 : 1
   end
 
