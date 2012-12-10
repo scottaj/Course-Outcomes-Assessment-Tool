@@ -49,6 +49,17 @@
 #   # :socket    => '/var/lib/mysql/mysql.sock'
 # }
 
+postgres = URI.parse(ENV['DATABASE_URL'] || '')
+
+ActiveRecord::Base.configurations[:production] = {
+  :adapter  => 'postgresql',
+  :encoding => 'utf8',
+  :database => postgres.path[1..-1], 
+  :username => postgres.user,
+  :password => postgres.password,
+  :host     => postgres.host
+}
+
 # Setup our logger
 ActiveRecord::Base.logger = logger
 
@@ -73,16 +84,4 @@ ActiveSupport.use_standard_json_time_format = true
 ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can estabilish connection with our db
-# ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
-
-db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-
-ActiveRecord::Base.establish_connection(
-  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-  :host     => db.host,
-  :port     => db.port,
-  :username => db.user,
-  :password => db.password,
-  :database => db.path[1..-1],
-  :encoding => 'utf8'
-)
+ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
