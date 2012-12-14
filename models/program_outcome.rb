@@ -61,7 +61,7 @@ class ProgramOutcome < ActiveRecord::Base
   end
   
   def passing_by_average?(cond = {})
-    return self.outcome_average >= 0.7
+    return self.outcome_average(cond) >= 0.7
   end
   
   def passing_by_count?(cond = {})

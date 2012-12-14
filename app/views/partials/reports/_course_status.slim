@@ -21,10 +21,5 @@
               span class="status-text" #{(course.outcome_average * 100).to_i}%
             div class="span6"
               div class="status-#{course.passing_by_count? ? 'good' : 'bad'}"
-              span class="status-text" #{course.outcomes.find_all {|o| o.passing?}.size} &#47 #{course.outcomes.size}          
-
-
-
-
-
+              span class="status-text" #{course.outcomes.find_all {|o| o.passing?}.size} &#47 #{course.outcomes.size}
 
