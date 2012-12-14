@@ -45,4 +45,10 @@ CourseOutcomes.controllers :reports do
       program_outcomes: program_outcomes
     }
   end
+
+  post :program_outcome_all_time, map: "reports/program/status/all_time" do
+    partial "partials/reports/program_outcome_status_all_time", locals: {
+      outcomes: ProgramOutcome.all
+    }
+  end
 end
