@@ -21,30 +21,33 @@ div class="container-fluid"
           li id="tab2"
             a href="#content2" data-toggle="tab" User Status
           li id="tab3"
-            a href="#content3" data-toggle="tab" Program Outcome Status
+            a href="#content3" data-toggle="tab" Program Outcome Status            
       div class="tabbable"
         div class="tab-content"
           div id="content1" class="tab-pane"
           div id="content2" class="tab-pane"
           div id="content3" class="tab-pane"
-
+            ul class="nav nav-tabs"
+              li id="tab3a"
+                a href="#content3a" data-toggle="tab" By Course
+              li id="tab3b"
+                a href="#content3b" data-toggle="tab" All Time
+      div class="tabbable"
+        div class="tab-content"
+          div id="content3a" class="tab-pane"
+          div id="content3b" class="tab-pane"
 javascript:
-  $('#tab1 a').click(function(e) {
-    e.preventDefault();
-    $(this).tab('show');
-    $("#content1").addClass("fade in");
-  });
-  $('#tab2 a').click(function(e) {
-    e.preventDefault();
-    $(this).tab('show');
-    $("#content2").addClass("fade in");
-  });
-  $('#tab3 a').click(function(e) {
-    e.preventDefault();
-    $(this).tab('show');
-    $("#content3").addClass("fade in");
+  // Set up data tabs 
+  var tab_ids = ["1", "2", "3", "3a", "3b"]
+  $.each(tab_ids, function(i, id) {
+    $('#tab'+id+' a').click(function(e) {
+      e.preventDefault();
+      $(this).tab('show');
+      $("#content"+id).addClass("fade in");
+    });
   });
 
+  // Load tab data via ajax
   $.post('reports/course/status', function(data) {
     $('#content1').append(data);
   });
@@ -52,8 +55,12 @@ javascript:
     $('#content2').append(data);
   });
   $.post('reports/program/status', function(data) {
-    $('#content3').append(data);  
+    $('#content3a').append(data);  
+  });
+  $.post('reports/program/status/all_time', function(data) {
+    $('#content3b').append(data);  
   });
 
+  // Set up default tab
   $('#tab1 a').tab('show')
   $("#content1").addClass("fade in");

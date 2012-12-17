@@ -14,7 +14,7 @@ CourseOutcomes.controllers :reports do
        terms: terms
     }
   end
-
+  
   post :user_status, map: "reports/user/status" do
     user = User.find(session[:token])
     if user.admin?
@@ -29,6 +29,24 @@ CourseOutcomes.controllers :reports do
   end
 
   post :program_status, map: "reports/program/status" do
+    user = User.find(session[:token])
+    program_outcomes = ProgramOutcome.all(order: "enum ASC")
+    
+    if user.admin?
+      courses = Course.all(order: "term_year DESC, term_number DESC")
+    else
+      courses = user.courses(order: "term_year DESC, term_number DESC")
+    end
+
+    terms = Set.new(courses).divide {|c| c.term_year}.map {|year| year.divide{|c| c.term_number}}
+    
+    partial "partials/reports/program_outcome_status", locals: {
+      terms: terms,
+      program_outcomes: program_outcomes
+    }
+  end
+
+  post :program_outcome_all_time, map: "reports/program/status/all_time" do
     partial "partials/reports/program_outcome_status_all_time", locals: {
       outcomes: ProgramOutcome.all
     }
