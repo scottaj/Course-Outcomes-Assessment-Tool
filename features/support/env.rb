@@ -9,6 +9,7 @@ require 'database_cleaner'
 require 'database_cleaner/cucumber'
 
 DatabaseCleaner.strategy = :truncation
+Capybara.javascript_driver = :webkit
 
 class CourseOutcomesWorld
   include Capybara::DSL
